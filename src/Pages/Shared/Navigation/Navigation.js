@@ -12,7 +12,7 @@ const Navigation = () => {
                         width="130"
                         height="40"
                         className="d-inline-block align-top"
-                        alt="React Bootstrap logo"
+                        alt="App Logo"
                     />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

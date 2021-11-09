@@ -1,0 +1,12 @@
+.sign-in{
+    background-image: url(https://notification.csnstatic.com/auth/bg/carsales_2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    background-size: 100% 100%;
+}
+
+.sign-in-btn{
+    border-color: black;
+}

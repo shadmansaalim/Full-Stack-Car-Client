@@ -1,9 +1,12 @@
 import React from 'react';
+import Navigation from '../../Shared/Navigation/Navigation';
+import HomeBanner from '../HomeBanner/HomeBanner';
 
 const Home = () => {
     return (
         <div>
-            <h2>This is Home</h2>
+            <Navigation></Navigation>
+            <HomeBanner></HomeBanner>
         </div>
     );
 };

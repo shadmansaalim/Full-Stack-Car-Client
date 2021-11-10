@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import Navigation from '../../Shared/Navigation/Navigation';
 import './Dashboard.css';
 import {
     Switch,
@@ -14,6 +13,10 @@ import DashboardHome from '../DashboardHome/DashboardHome';
 import useAuth from '../../../hooks/useAuth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faSignOutAlt, faBorderAll, faMoneyCheckAlt, faPen, faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
+import Pay from '../Pay/Pay';
+import MyOrders from '../MyOrders/MyOrders';
+import AddReview from '../AddReview/AddReview';
+
 
 const Dashboard = () => {
     const [toggled, setToggled] = useState(false);
@@ -77,7 +80,7 @@ const Dashboard = () => {
                         <i onClick={() => setToggled(!toggled)} class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"
                             style={{ color: '#007cc2' }}
                         ></i>
-                        <h2 class="fs-2 m-0">Dashboard</h2>
+                        <h3 class="m-0">Dashboard</h3>
                     </div>
 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -134,11 +137,14 @@ const Dashboard = () => {
                         <Route exact path={path}>
                             <DashboardHome></DashboardHome>
                         </Route>
-                        <Route path={`${path}/makeAdmin`}>
-
+                        <Route path={`${path}/pay`}>
+                            <Pay></Pay>
                         </Route>
-                        <Route path={`${path}/addDoctor`}>
-
+                        <Route path={`${path}/my-orders`}>
+                            <MyOrders></MyOrders>
+                        </Route>
+                        <Route path={`${path}/add-review`}>
+                            <AddReview></AddReview>
                         </Route>
                     </Switch>
                 </div>

@@ -12,7 +12,7 @@ import { Button, Offcanvas } from 'react-bootstrap';
 import DashboardHome from '../DashboardHome/DashboardHome';
 import useAuth from '../../../hooks/useAuth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faSignOutAlt, faBorderAll, faMoneyCheckAlt, faPen, faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faUserCircle, faSignOutAlt, faBorderAll, faMoneyCheckAlt, faPen, faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
 import Pay from '../Pay/Pay';
 import MyOrders from '../MyOrders/MyOrders';
 import AddReview from '../AddReview/AddReview';
@@ -41,6 +41,8 @@ const Dashboard = () => {
                     />
                 </div>
                 <div class="list-group list-group-flush my-3 ">
+                    <Link to="/home"><Button className="btn app-main-btn col-10 mb-3 " >
+                        <FontAwesomeIcon icon={faHome} /> Home</Button></Link>
                     <Link to={`${url}`}><Button className="btn app-main-btn col-10 mb-3 " >
                         <FontAwesomeIcon icon={faTachometerAlt} /> Dashboard</Button></Link>
 

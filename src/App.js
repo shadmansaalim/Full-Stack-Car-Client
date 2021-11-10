@@ -12,7 +12,7 @@ import ContextProvider from './context/ContextProvider';
 import CarDetails from './Pages/CarDetails/CarDetails';
 import Cars from './Pages/Cars/Cars';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
-import Dashboard from './Pages/Dashboard/Dashboard';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 
 function App() {

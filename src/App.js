@@ -12,6 +12,7 @@ import Join from './Pages/Join/Join';
 import ContextProvider from './context/ContextProvider';
 import CarDetails from './Pages/CarDetails/CarDetails';
 import Cars from './Pages/Cars/Cars';
+import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -37,9 +38,9 @@ function App() {
             <Route exact path="/join">
               <Join></Join>
             </Route>
-            <Route exact path="/car/:id">
+            <PrivateRoute exact path="/car/:id">
               <CarDetails></CarDetails>
-            </Route>
+            </PrivateRoute>
           </Switch>
         </Router>
       </ContextProvider>

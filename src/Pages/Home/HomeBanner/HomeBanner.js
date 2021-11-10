@@ -1,6 +1,7 @@
 import React from 'react';
 import './HomeBanner.css';
 import { Button, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const HomeBanner = () => {
     return (
@@ -19,7 +20,9 @@ const HomeBanner = () => {
                     <h5>30-day returns (up to 1500 mi)</h5>
                 </div>
                 <div>
-                    <Button className="app-main-btn rounded-pill" size="lg">Show me 154,545 cars</Button>
+                    <Link to="/cars">
+                        <Button className="app-main-btn rounded-pill" size="lg">Show me 154,545 cars</Button>
+                    </Link>
                     <br />
                     <small>Everything you auto know</small>
                 </div>

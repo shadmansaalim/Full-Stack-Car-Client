@@ -209,14 +209,17 @@ const FeaturedCars = () => {
     }, [])
     return (
         <div className="my-5">
-            <Row xs={1} md={3} className="g-4">
-                {
-                    featuredCars.map(car => <Car>
-                        key={car.carID}
-                        car={car}
-                    </Car>)
-                }
-            </Row>
+            {
+                <Row xs={1} md={3} className="g-4">
+                    {
+                        featuredCars.map(car => <Car
+                            key={car.carID}
+                            car={car}
+                        >
+                        </Car>)
+                    }
+                </Row>
+            }
         </div>
     );
 };

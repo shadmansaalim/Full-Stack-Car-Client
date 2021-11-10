@@ -2,11 +2,10 @@ import initializeAuthentication from "../Firebase/firebase.init";
 import { getAuth, createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup, FacebookAuthProvider, signInWithEmailAndPassword, onAuthStateChanged, signOut, TwitterAuthProvider, getIdToken } from "firebase/auth";
 import { useState } from "react";
 import { useEffect } from "react";
-import { toast } from 'react-toastify';
 import swal from 'sweetalert';
 
 initializeAuthentication();
-toast.configure()
+
 
 const useFirebase = () => {
     const [user, setUser] = useState({})
@@ -114,7 +113,6 @@ const useFirebase = () => {
                 //Using location to redirect the user to his/her desired destination if the user was redirected to login page by the system. Doing this to improve the UX of the user.
                 const destination = location?.state?.from || '/';
                 history.replace(destination);
-                toast.success(`Welcome back ${auth.currentUser.displayName.split(' ')[0]}`)
 
             })
             .catch((error) => {

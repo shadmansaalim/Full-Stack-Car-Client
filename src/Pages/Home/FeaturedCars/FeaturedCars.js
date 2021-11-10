@@ -2,7 +2,8 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Row } from 'react-bootstrap';
-import FeaturedCar from '../FeaturedCar/FeaturedCar';
+import Car from '../../Shared/Car/Car';
+
 
 
 const cars = [
@@ -210,10 +211,10 @@ const FeaturedCars = () => {
         <div className="my-5">
             <Row xs={1} md={3} className="g-4">
                 {
-                    featuredCars.map(car => <FeaturedCar
+                    featuredCars.map(car => <Car>
                         key={car.carID}
                         car={car}
-                    ></FeaturedCar>)
+                    </Car>)
                 }
             </Row>
         </div>

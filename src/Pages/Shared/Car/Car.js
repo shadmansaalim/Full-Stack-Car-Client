@@ -1,11 +1,11 @@
 import React from 'react';
 import { Col, Card, Button } from 'react-bootstrap';
-import './FeaturedCar.css';
+import './Car.css';
 import { Link } from 'react-router-dom';
 
 
 
-const FeaturedCar = ({ car }) => {
+const Car = ({ car }) => {
     const { _id, modelName, bodyType, img, price } = car;
     return (
         <Col>
@@ -29,4 +29,4 @@ const FeaturedCar = ({ car }) => {
     );
 };
 
-export default FeaturedCar;
+export default Car;

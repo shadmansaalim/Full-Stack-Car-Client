@@ -11,6 +11,7 @@ import SignInEmail from './Pages/SignIn/SignInEmail';
 import Join from './Pages/Join/Join';
 import ContextProvider from './context/ContextProvider';
 import CarDetails from './Pages/CarDetails/CarDetails';
+import Cars from './Pages/Cars/Cars';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
             </Route>
             <Route exact path="/home">
               <Home></Home>
+            </Route>
+            <Route exact path="/cars">
+              <Cars></Cars>
             </Route>
             <Route exact path="/sign-in">
               <SignIn></SignIn>

@@ -206,9 +206,11 @@ const FeaturedCars = () => {
         fetch(`http://localhost:5000/cars?size=${size}`)
             .then(res => res.json())
             .then(cars => setFeaturedCars(cars))
+
     }, [])
     return (
         <div className="my-5">
+            <h2 className="text-start mb-4">Featured Cars</h2>
             {
                 <Row xs={1} md={3} className="g-4">
                     {

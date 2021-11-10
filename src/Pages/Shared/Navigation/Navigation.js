@@ -91,7 +91,7 @@ const Navigation = () => {
                                 <div className="text-center">
                                     {
                                         user.photoURL ?
-                                            <img className=" img-fluid rounded-circle settings-user-img" src={user.photoURL} alt={user.displayName}></img>
+                                            <img className=" img-fluid rounded-circle settings-user-img" src={user.photoURL} alt=""></img>
                                             :
                                             <FontAwesomeIcon className="fs-1 text-secondary settings-user-img" icon={faUserCircle} />
                                     }

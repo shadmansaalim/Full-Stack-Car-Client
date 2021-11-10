@@ -7,6 +7,9 @@ import {
 } from "react-router-dom";
 import Home from './Pages/Home/Home/Home';
 import SignIn from './Pages/SignIn/SignIn';
+import SignInEmail from './Pages/SignIn/SignInEmail';
+import Join from './Pages/Join/Join';
+import JoinEmail from './Pages/Join/Join';
 
 function App() {
   return (
@@ -21,6 +24,12 @@ function App() {
           </Route>
           <Route exact path="/sign-in">
             <SignIn></SignIn>
+          </Route>
+          <Route exact path="/sign-in/email">
+            <SignInEmail></SignInEmail>
+          </Route>
+          <Route exact path="/join">
+            <Join></Join>
           </Route>
         </Switch>
       </Router>

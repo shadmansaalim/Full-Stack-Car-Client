@@ -8,13 +8,17 @@ import Footer from '../Shared/Footer/Footer';
 import './CarDetails.css';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+toast.configure()
 
 const CarDetails = () => {
     const { id } = useParams();
     const [car, setCar] = useState({});
     const { user } = useAuth();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const date = new Date();
 
     const [show, setShow] = useState(false);
 
@@ -28,7 +32,29 @@ const CarDetails = () => {
     }, [])
 
     const onSubmit = data => {
+        data.status = "Pending";
+        data.modelID = id;
+        data.date = date.toLocaleDateString()
 
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.insertedId) {
+                    toast.success('Order Place Successfully')
+                    handleClose();
+                    reset();
+
+                }
+            })
+            .catch(error => {
+                alert('Something went wrong')
+            })
     }
 
     return (
@@ -88,6 +114,15 @@ const CarDetails = () => {
                                                     <input type="email"
                                                         defaultValue={user?.email}
                                                         class="order-form-input" required placeholder=" " {...register("email")} />
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3 mx-4">
+                                                <div class="col-12">
+                                                    <label class="order-form-label">Phone</label>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="number"
+                                                        class="order-form-input" required placeholder="Your Number" {...register("phone")} />
                                                 </div>
                                             </div>
 

@@ -21,7 +21,7 @@ const Car = ({ car }) => {
                 </Card.Body>
                 <Card.Footer>
                     <Link to={`/car/${_id}`}>
-                        <Button className="btn app-main-btn">Book Now</Button>
+                        <Button className="btn app-main-btn">Preview</Button>
                     </Link>
                 </Card.Footer>
             </Card>

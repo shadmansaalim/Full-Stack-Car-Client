@@ -3,13 +3,18 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navigation from '../Shared/Navigation/Navigation';
-import { Container, Button, Badge } from 'react-bootstrap';
+import { Container, Button, Modal } from 'react-bootstrap';
 import Footer from '../Shared/Footer/Footer';
+import './CarDetails.css';
 
 
 const CarDetails = () => {
     const { id } = useParams();
     const [car, setCar] = useState({});
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
         fetch(`http://localhost:5000/car/${id}`)
@@ -35,12 +40,96 @@ const CarDetails = () => {
                         borderBottom: '1px solid gray'
                     }}>
                         <h4>Drive away from ${car?.price}</h4>
-                        <Button variant="dark">
-                            Add To Cart <Badge style={{
-                                backgroundColor: '#007cc2'
-                            }}>0</Badge>
-                            <span className="visually-hidden">unread messages</span>
+                        <Button variant="dark" onClick={handleShow}>
+                            Book Now
                         </Button>
+
+                        <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                                <Modal.Title>Provide delivery details</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <section class="order-form my-4 mx-4">
+
+
+                                    <div class="row">
+                                        <form class="col-12">
+
+                                            <div class="row mx-4">
+                                                <div class="col-12 mb-2">
+                                                    <label class="order-form-label">Name</label>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <input class="order-form-input" placeholder="First" />
+                                                </div>
+                                                <div class="col-12 col-sm-6 mt-2 mt-sm-0">
+                                                    <input class="order-form-input" placeholder="Last" />
+                                                </div>
+                                            </div>
+
+                                            <div class="row mt-3 mx-4">
+                                                <div class="col-12">
+                                                    <label class="order-form-label">Type of thing you want to order</label>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input class="order-form-input" placeholder=" " />
+                                                </div>
+                                            </div>
+
+                                            <div class="row mt-3 mx-4">
+                                                <div class="col-12">
+                                                    <label class="order-form-label">Another type of thing you want to order</label>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input class="order-form-input" placeholder=" " />
+                                                </div>
+                                            </div>
+
+                                            <div class="row mt-3 mx-4">
+                                                <div class="col-12">
+                                                    <label class="order-form-label">Adress</label>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input class="order-form-input" placeholder="Street Address" />
+                                                </div>
+                                                <div class="col-12 mt-2">
+                                                    <input class="order-form-input" placeholder="Street Address Line 2" />
+                                                </div>
+                                                <div class="col-12 col-sm-6 mt-2 pr-sm-2">
+                                                    <input class="order-form-input" placeholder="City" />
+                                                </div>
+                                                <div class="col-12 col-sm-6 mt-2 pl-sm-0">
+                                                    <input class="order-form-input" placeholder="Region" />
+                                                </div>
+                                                <div class="col-12 col-sm-6 mt-2 pr-sm-2">
+                                                    <input class="order-form-input" placeholder="Postal / Zip Code" />
+                                                </div>
+                                                <div class="col-12 col-sm-6 mt-2 pl-sm-0">
+                                                    <input class="order-form-input" placeholder="Country" />
+                                                </div>
+                                            </div>
+
+                                            <div class="row mt-3 mx-4">
+                                                <div class="col-12">
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" name="validation" id="validation" value="1" />
+                                                        <label for="validation" class="form-check-label">I know what I need to know</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mt-3">
+                                                <div class="col-12">
+                                                    <button type="button" id="btnSubmit" class="btn btn-dark d-block mx-auto btn-submit">Submit</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                </section>
+                            </Modal.Body>
+                        </Modal>
                     </div>
                     <div className="row d-flex align-items-center">
                         <div className="col-lg-5 text-start">

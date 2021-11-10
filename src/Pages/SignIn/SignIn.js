@@ -5,13 +5,23 @@ import googleIcon from '../../images/googleIcon.png';
 import facebookIcon from '../../images/facebookIcon.png';
 import appleIcon from '../../images/AppleIcon.png';
 import emailIcon from '../../images/emailIcon.png';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+
 
 
 
 const SignIn = () => {
+    const { signInWithGoogle,
+        signInWithFacebook,
+        signInWithTwitter } = useAuth();
+
+    const location = useLocation();
     const history = useHistory();
+
+
+
     return (
         <div className="sign-in d-flex align-items-center justify-content-center">
             <div className="shadow-lg rounded-3 col-lg-4 mx-auto p-5" style={{ background: '#f2f2f2' }}>
@@ -24,15 +34,15 @@ const SignIn = () => {
                 />
                 <h4 className="my-5 text-dark">Welcome to CarSales</h4>
                 <div>
-                    <Button className="rounded-pill sign-in-btn shadow bg-white text-dark mb-4 d-block w-100" size="lg">
+                    <Button onClick={() => signInWithFacebook(location, history)} className="rounded-pill sign-in-btn shadow bg-white text-dark mb-4 d-block w-100" size="lg">
                         <img width="24px" className="img-fluid  me-2" src={facebookIcon} alt="Google" />
                         <small>Continue With Facebook</small>
                     </Button>
-                    <Button className="rounded-pill sign-in-btn shadow bg-white text-dark mb-4 d-block w-100" size="lg">
+                    <Button onClick={() => signInWithGoogle(location, history)} className="rounded-pill sign-in-btn shadow bg-white text-dark mb-4 d-block w-100" size="lg">
                         <img width="24px" className="img-fluid  me-2" src={googleIcon} alt="Google" />
                         <small>Continue With Google</small>
                     </Button>
-                    <Button className="rounded-pill sign-in-btn shadow bg-white text-dark mb-4 d-block w-100" size="lg">
+                    <Button onClick={() => signInWithGoogle(location, history)} className="rounded-pill sign-in-btn shadow bg-white text-dark mb-4 d-block w-100" size="lg">
                         <img width="24px" className="img-fluid  me-2" src={appleIcon} alt="Google" />
                         <small>Continue With Apple</small>
                     </Button>

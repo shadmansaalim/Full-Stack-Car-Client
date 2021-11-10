@@ -12,6 +12,7 @@ import ContextProvider from './context/ContextProvider';
 import CarDetails from './Pages/CarDetails/CarDetails';
 import Cars from './Pages/Cars/Cars';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
+import Dashboard from './Pages/Dashboard/Dashboard';
 
 
 function App() {
@@ -38,7 +39,9 @@ function App() {
             <PrivateRoute exact path="/car/:id">
               <CarDetails></CarDetails>
             </PrivateRoute>
-
+            <PrivateRoute path="/dashboard">
+              <Dashboard></Dashboard>
+            </PrivateRoute>
           </Switch>
         </Router>
       </ContextProvider>

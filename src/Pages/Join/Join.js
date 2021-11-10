@@ -42,7 +42,7 @@ const Join = () => {
                     alt="App Logo"
                 />
                 <h4 className="my-4">Create an Account to Continue</h4>
-                <form className="mb-5" onSubmit={handleSignUpSubmit} >
+                <form className="mb-3" onSubmit={handleSignUpSubmit} >
 
                     <div className="form-floating mb-3">
                         <input
@@ -83,9 +83,8 @@ const Join = () => {
                             type="password" className="form-control" id="floatingSignUpRepeatPassword" placeholder="Password" />
                         <label htmlFor="floatingSignUpRepeatPassword">Repeat Password</label>
                     </div>
-
+                    <button type="submit" className="btn btn-primary app-main-btn mt-3">Create Account</button>
                 </form>
-                <button className="btn btn-primary app-main-btn">Create Account</button>
                 <div className="text-center mt-3"> <span>Already a member?</span> <Link to="/sign-in">Login</Link> </div>
             </div>
         </div>

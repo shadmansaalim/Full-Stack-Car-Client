@@ -53,7 +53,7 @@ const SignInEmail = () => {
                     </div>
 
                     <div className="mt-3 text-end">
-                        <button className="btn btn-primary app-main-btn">Login</button>
+                        <button type="submit" className="btn btn-primary app-main-btn">Login</button>
                     </div>
 
                 </form>

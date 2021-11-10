@@ -6,11 +6,16 @@ import Navigation from '../Shared/Navigation/Navigation';
 import { Container, Button, Modal } from 'react-bootstrap';
 import Footer from '../Shared/Footer/Footer';
 import './CarDetails.css';
+import { useForm } from 'react-hook-form';
+import useAuth from '../../hooks/useAuth';
 
 
 const CarDetails = () => {
     const { id } = useParams();
     const [car, setCar] = useState({});
+    const { user } = useAuth();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -21,6 +26,10 @@ const CarDetails = () => {
             .then(res => res.json())
             .then(data => setCar(data))
     }, [])
+
+    const onSubmit = data => {
+
+    }
 
     return (
         <div>
@@ -53,66 +62,77 @@ const CarDetails = () => {
 
 
                                     <div class="row">
-                                        <form class="col-12">
+                                        <form class="col-12" onSubmit={handleSubmit(onSubmit)}>
 
                                             <div class="row mx-4">
                                                 <div class="col-12 mb-2">
                                                     <label class="order-form-label">Name</label>
                                                 </div>
                                                 <div class="col-12 col-sm-6">
-                                                    <input class="order-form-input" placeholder="First" />
+                                                    <input type="text"
+                                                        defaultValue={user?.displayName?.split(' ')[0]}
+                                                        class="order-form-input" placeholder="First" required {...register("firstName")} />
                                                 </div>
                                                 <div class="col-12 col-sm-6 mt-2 mt-sm-0">
-                                                    <input class="order-form-input" placeholder="Last" />
+                                                    <input type="text"
+                                                        defaultValue={user?.displayName?.split(' ')[1]}
+                                                        class="order-form-input" placeholder="Last" required {...register("lastName")} />
                                                 </div>
                                             </div>
 
                                             <div class="row mt-3 mx-4">
                                                 <div class="col-12">
-                                                    <label class="order-form-label">Type of thing you want to order</label>
+                                                    <label class="order-form-label">Email</label>
                                                 </div>
                                                 <div class="col-12">
-                                                    <input class="order-form-input" placeholder=" " />
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-3 mx-4">
-                                                <div class="col-12">
-                                                    <label class="order-form-label">Another type of thing you want to order</label>
-                                                </div>
-                                                <div class="col-12">
-                                                    <input class="order-form-input" placeholder=" " />
+                                                    <input type="email"
+                                                        defaultValue={user?.email}
+                                                        class="order-form-input" required placeholder=" " {...register("email")} />
                                                 </div>
                                             </div>
 
                                             <div class="row mt-3 mx-4">
                                                 <div class="col-12">
-                                                    <label class="order-form-label">Adress</label>
+                                                    <label class="order-form-label">Car Model</label>
                                                 </div>
                                                 <div class="col-12">
-                                                    <input class="order-form-input" placeholder="Street Address" />
+                                                    <input type="text"
+                                                        disabled
+                                                        defaultValue={car?.modelName}
+                                                        class="order-form-input" placeholder=" " required {...register("modelName")} />
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="row mt-3 mx-4">
+                                                <div class="col-12">
+                                                    <label class="order-form-label">Address</label>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="text" class="order-form-input" placeholder="Street Address" required {...register("streetAddress")} />
                                                 </div>
                                                 <div class="col-12 mt-2">
-                                                    <input class="order-form-input" placeholder="Street Address Line 2" />
+                                                    <input type="text" class="order-form-input" placeholder="Street Address Line 2" required {...register("streetAddressLine2")} />
                                                 </div>
                                                 <div class="col-12 col-sm-6 mt-2 pr-sm-2">
-                                                    <input class="order-form-input" placeholder="City" />
+                                                    <input type="text" class="order-form-input" placeholder="City" required {...register("city")} />
                                                 </div>
                                                 <div class="col-12 col-sm-6 mt-2 pl-sm-0">
-                                                    <input class="order-form-input" placeholder="Region" />
+                                                    <input type="text" class="order-form-input" placeholder="Region" required {...register("region")} />
                                                 </div>
                                                 <div class="col-12 col-sm-6 mt-2 pr-sm-2">
-                                                    <input class="order-form-input" placeholder="Postal / Zip Code" />
+                                                    <input type="text" class="order-form-input" placeholder="Zip Code" required {...register("zipCode")} />
                                                 </div>
                                                 <div class="col-12 col-sm-6 mt-2 pl-sm-0">
-                                                    <input class="order-form-input" placeholder="Country" />
+                                                    <input type="text" class="order-form-input" placeholder="Country" required {...register("country")} />
                                                 </div>
                                             </div>
 
                                             <div class="row mt-3 mx-4">
                                                 <div class="col-12">
                                                     <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" name="validation" id="validation" value="1" />
+                                                        <input type="checkbox" class="form-check-input" name="validation" id="validation" value="1" required />
                                                         <label for="validation" class="form-check-label">I know what I need to know</label>
                                                     </div>
                                                 </div>
@@ -120,7 +140,7 @@ const CarDetails = () => {
 
                                             <div class="row mt-3">
                                                 <div class="col-12">
-                                                    <button type="button" id="btnSubmit" class="btn btn-dark d-block mx-auto btn-submit">Submit</button>
+                                                    <button type="submit" id="btnSubmit" class="btn btn-dark d-block mx-auto btn-submit">Submit</button>
                                                 </div>
                                             </div>
 

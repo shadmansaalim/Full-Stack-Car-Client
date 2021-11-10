@@ -17,10 +17,11 @@ const useFirebase = () => {
 
     const auth = getAuth();
 
-    const registerUser = (name, email, password, history) => {
+    const registerUser = (firstName, lastName, email, password, history) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+                const name = firstName + " " + lastName;
                 const newUser = { email, displayName: name };
                 setUser(newUser);
 

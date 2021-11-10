@@ -3,8 +3,9 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navigation from '../Shared/Navigation/Navigation';
-import { Container } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import Footer from '../Shared/Footer/Footer';
+
 
 const CarDetails = () => {
     const { id } = useParams();
@@ -62,7 +63,8 @@ const CarDetails = () => {
                             </div>
                         </div>
                         <div className="col-lg-7">
-                            <img className="img-fluid" src={car?.img} alt="" />
+                            <img className="img-fluid mb-5" src={car?.img} alt="" />
+                            <Button variant="outline-dark" size="lg">Add To Cart</Button>
                         </div>
                     </div>
                 </div>

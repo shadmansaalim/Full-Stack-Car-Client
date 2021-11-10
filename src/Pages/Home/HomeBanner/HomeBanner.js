@@ -1,6 +1,6 @@
 import React from 'react';
 import './HomeBanner.css';
-import { Button, FloatingLabel, Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 
 const HomeBanner = () => {
     return (

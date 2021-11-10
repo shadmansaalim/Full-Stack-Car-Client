@@ -1,0 +1,22 @@
+.settings-user-img{
+    font-size: 84px !important;
+    width: 84px !important;
+    height: 84px !important;
+}
+
+.drawer-buttons{
+    background-color: rgb(69, 82, 110) !important;
+    border-color: rgb(69, 82, 110) !important;
+}
+
+.drawer-buttons:hover{
+    background-color: rgb(38, 43, 53) !important;
+}
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}

@@ -13,6 +13,7 @@ import CarDetails from './Pages/CarDetails/CarDetails';
 import Cars from './Pages/Cars/Cars';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 
+
 function App() {
   return (
     <div className="App">
@@ -37,6 +38,7 @@ function App() {
             <PrivateRoute exact path="/car/:id">
               <CarDetails></CarDetails>
             </PrivateRoute>
+
           </Switch>
         </Router>
       </ContextProvider>

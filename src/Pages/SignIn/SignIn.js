@@ -14,7 +14,7 @@ import { useState } from 'react';
 
 
 const SignIn = () => {
-    const { user, loginUser, signInWithGoogle,
+    const { loginUser, signInWithGoogle,
         signInWithFacebook,
         signInWithTwitter } = useAuth();
 

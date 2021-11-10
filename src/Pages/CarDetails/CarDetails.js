@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navigation from '../Shared/Navigation/Navigation';
-import { Container, Button } from 'react-bootstrap';
+import { Container, Button, Badge } from 'react-bootstrap';
 import Footer from '../Shared/Footer/Footer';
 
 
@@ -31,10 +31,16 @@ const CarDetails = () => {
             </div>
             <Container>
                 <div className="my-5 shadow-lg p-5 bg-white  mx-auto rounded-3">
-                    <div className="text-start" style={{
+                    <div className="d-flex justify-content-between align-items-center pb-3" style={{
                         borderBottom: '1px solid gray'
                     }}>
                         <h4>Drive away from ${car?.price}</h4>
+                        <Button variant="dark">
+                            Add To Cart <Badge style={{
+                                backgroundColor: '#007cc2'
+                            }}>0</Badge>
+                            <span className="visually-hidden">unread messages</span>
+                        </Button>
                     </div>
                     <div className="row d-flex align-items-center">
                         <div className="col-lg-5 text-start">
@@ -64,7 +70,6 @@ const CarDetails = () => {
                         </div>
                         <div className="col-lg-7">
                             <img className="img-fluid mb-5" src={car?.img} alt="" />
-                            <Button variant="outline-dark" size="lg">Add To Cart</Button>
                         </div>
                     </div>
                 </div>

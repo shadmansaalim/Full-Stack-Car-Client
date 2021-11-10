@@ -10,6 +10,7 @@ import SignIn from './Pages/SignIn/SignIn';
 import SignInEmail from './Pages/SignIn/SignInEmail';
 import Join from './Pages/Join/Join';
 import ContextProvider from './context/ContextProvider';
+import CarDetails from './Pages/CarDetails/CarDetails';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
             </Route>
             <Route exact path="/join">
               <Join></Join>
+            </Route>
+            <Route exact path="/car/:id">
+              <CarDetails></CarDetails>
             </Route>
           </Switch>
         </Router>

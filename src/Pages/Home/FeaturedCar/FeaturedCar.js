@@ -1,11 +1,12 @@
 import React from 'react';
 import { Col, Card, Button } from 'react-bootstrap';
 import './FeaturedCar.css';
+import { Link } from 'react-router-dom';
 
 
 
 const FeaturedCar = ({ car }) => {
-    const { modelName, bodyType, img, price } = car;
+    const { _id, modelName, bodyType, img, price } = car;
     return (
         <Col>
             <Card className="h-100">
@@ -19,7 +20,9 @@ const FeaturedCar = ({ car }) => {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    <Button className="btn app-main-btn">Book Now</Button>
+                    <Link to={`/car/${_id}`}>
+                        <Button className="btn app-main-btn">Book Now</Button>
+                    </Link>
                 </Card.Footer>
             </Card>
         </Col>

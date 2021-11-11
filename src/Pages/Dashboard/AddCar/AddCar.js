@@ -4,6 +4,7 @@ import swal from 'sweetalert';
 
 const AddCar = () => {
     const { control, register, handleSubmit, reset, formState: { errors } } = useForm();
+
     const { fields: availabilityFields } = useFieldArray({
         control, // control props comes from useForm (optional: if you are using FormContext)
         name: "availableIn" // unique name for your Field Array
@@ -12,8 +13,9 @@ const AddCar = () => {
     const { fields: featuresField } = useFieldArray({
         control, // control props comes from useForm (optional: if you are using FormContext)
         name: "features" // unique name for your Field Array
-
     });
+
+
 
     const onSubmit = data => {
         //Checking if user kept inputs empty using regEx and updating data object
@@ -141,7 +143,7 @@ const AddCar = () => {
                             <div className="col-12">
                                 <div className="form-check">
                                     <input type="checkbox" className="form-check-input" name="validation" id="validation" value="1" required />
-                                    <label for="validation" className="form-check-label">I know what I need to know</label>
+                                    <label htmlFor="validation" className="form-check-label">I know what I need to know</label>
                                 </div>
                             </div>
                         </div>

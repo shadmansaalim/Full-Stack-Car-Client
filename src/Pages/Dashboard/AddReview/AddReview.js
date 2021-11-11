@@ -41,11 +41,11 @@ const AddReview = () => {
                             <p>Please enter your feedback here</p>
                             <div className="form-floating mb-3">
                                 <input defaultValue={user?.displayName} type="text" className="form-control" id="floatingServiceName" placeholder="name@example.com" required  {...register("name")} />
-                                <label htmlFor="floatingServiceName"><small>Your Name</small></label>
+                                <label htmlhtmlFor="floatingServiceName"><small>Your Name</small></label>
                             </div>
                             <div class="form-floating mb-3">
                                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingServiceDescription" style={{ height: '100px' }} {...register("review")}></textarea>
-                                <label htmlFor="floatingServiceDescription">Review</label>
+                                <label htmlhtmlFor="floatingServiceDescription">Review</label>
                             </div>
                             <div className="text-start">
                                 <Rating

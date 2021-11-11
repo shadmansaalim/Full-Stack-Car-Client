@@ -50,7 +50,7 @@ const Join = () => {
                             name="firstName"
                             type="text" className="form-control" id="floatingSignUpFirstName" placeholder="name@example.com"
                             required />
-                        <label htmlFor="floatingSignUpFirstName">First Name</label>
+                        <label htmlhtmlFor="floatingSignUpFirstName">First Name</label>
                     </div>
                     <div className="form-floating mb-3">
                         <input
@@ -59,7 +59,7 @@ const Join = () => {
                             type="text" className="form-control" id="floatingSignUpLastName" placeholder="name@example.com"
                             defaultValue=""
                         />
-                        <label htmlFor="floatingSignUpLastName">Last Name</label>
+                        <label htmlhtmlFor="floatingSignUpLastName">Last Name</label>
                     </div>
                     <div className="form-floating mb-3">
                         <input
@@ -67,7 +67,7 @@ const Join = () => {
                             name="email"
                             type="email" className="form-control" id="floatingSignUpEmail" placeholder="name@example.com"
                             required />
-                        <label htmlFor="floatingSignUpEmail">Email address</label>
+                        <label htmlhtmlFor="floatingSignUpEmail">Email address</label>
                     </div>
 
                     <div className="form-floating mb-3">
@@ -75,14 +75,14 @@ const Join = () => {
                             onBlur={handleOnBlur}
                             name="password"
                             type="password" className="form-control" id="floatingSignUpPassword" placeholder="Password" required />
-                        <label htmlFor="floatingSignUpPassword">Password</label>
+                        <label htmlhtmlFor="floatingSignUpPassword">Password</label>
                     </div>
                     <div className="form-floating mb-2">
                         <input
                             onBlur={handleOnBlur}
                             name="password2"
                             type="password" className="form-control" id="floatingSignUpRepeatPassword" placeholder="Password" />
-                        <label htmlFor="floatingSignUpRepeatPassword">Repeat Password</label>
+                        <label htmlhtmlFor="floatingSignUpRepeatPassword">Repeat Password</label>
                     </div>
                     <button type="submit" className="btn btn-primary app-main-btn mt-3">Create Account</button>
                 </form>

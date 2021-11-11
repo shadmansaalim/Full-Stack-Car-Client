@@ -54,12 +54,12 @@ const SignIn = () => {
             <div className="form-floating mb-3">
                 <input onBlur={handleOnBlur} name="email" type="email" className="form-control" id="floatingLoginEmail" placeholder="name@example.com"
                     required />
-                <label htmlFor="floatingLoginEmail">Email address</label>
+                <label htmlhtmlFor="floatingLoginEmail">Email address</label>
             </div>
 
             <div className="form-floating mb-2">
                 <input onBlur={handleOnBlur} name="password" type="password" className="form-control" id="floatingLoginPassword" placeholder="Password" required />
-                <label htmlFor="floatingLoginPassword">Password</label>
+                <label htmlhtmlFor="floatingLoginPassword">Password</label>
             </div>
             <div className="mt-4 d-flex justify-content-between">
                 <div className="text-start">

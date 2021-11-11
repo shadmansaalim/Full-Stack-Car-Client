@@ -168,7 +168,7 @@ const CarDetails = () => {
                                                 <div className="col-12">
                                                     <div className="form-check">
                                                         <input type="checkbox" className="form-check-input" name="validation" id="validation" value="1" required />
-                                                        <label for="validation" className="form-check-label">I know what I need to know</label>
+                                                        <label htmlFor="validation" className="form-check-label">I know what I need to know</label>
                                                     </div>
                                                 </div>
                                             </div>

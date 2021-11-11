@@ -47,8 +47,14 @@ const useFirebase = () => {
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                setUser(user);
-                setIsLoading(false);
+                getIdToken(user)
+                    .then(carIdToken => {
+                        localStorage.setItem('carIdToken', carIdToken)
+                        setUser(user);
+                        setIsLoading(false);
+                    })
+
+
             } else {
                 setUser({})
                 setIsLoading(false);
@@ -56,6 +62,8 @@ const useFirebase = () => {
 
         });
     }, [auth])
+
+
 
 
     const signInWithGoogle = (location, history) => {

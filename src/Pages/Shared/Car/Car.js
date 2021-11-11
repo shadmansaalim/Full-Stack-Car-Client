@@ -1,12 +1,17 @@
 import React from 'react';
 import { Col, Card, Button } from 'react-bootstrap';
 import './Car.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import useAuth from '../../../hooks/useAuth';
 
 
-
-const Car = ({ car }) => {
+const Car = ({ car, handleDeleteCar }) => {
     const { _id, modelName, bodyType, img, price } = car;
+    const { admin } = useAuth();
+    const location = useLocation();
+    console.log(location);
     return (
         <Col>
             <Card className="h-100 car">
@@ -20,9 +25,19 @@ const Car = ({ car }) => {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                    <Link to={`/car/${_id}`}>
-                        <Button className="btn app-main-btn">Preview</Button>
-                    </Link>
+                    {
+                        (admin && location?.pathname === "/dashboard/manage-cars")
+                            ?
+                            <>
+                                <Button className="btn btn-dark ms-2">Edit <FontAwesomeIcon icon={faEdit} /></Button>
+                                <Button onClick={() => handleDeleteCar(_id)} className="btn btn-danger ms-2">Remove <FontAwesomeIcon icon={faTrash} /></Button>
+                            </>
+                            :
+                            <Link to={`/car/${_id}`}>
+                                <Button className="btn app-main-btn">Preview</Button>
+                            </Link>
+                    }
+
                 </Card.Footer>
             </Card>
         </Col>

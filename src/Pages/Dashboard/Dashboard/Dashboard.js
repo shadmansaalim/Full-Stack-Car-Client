@@ -12,13 +12,15 @@ import { Button, Offcanvas } from 'react-bootstrap';
 import DashboardHome from '../DashboardHome/DashboardHome';
 import useAuth from '../../../hooks/useAuth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faUserPlus, faHome, faUserCircle, faSignOutAlt, faBorderAll, faMoneyCheckAlt, faPen, faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCar, faPlus, faUserPlus, faHome, faUserCircle, faSignOutAlt, faBorderAll, faMoneyCheckAlt, faPen, faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
 import Pay from '../Pay/Pay';
 import MyOrders from '../MyOrders/MyOrders/MyOrders';
 import AddReview from '../AddReview/AddReview';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../AdminRoute/AdminRoute';
 import AddCar from '../AddCar/AddCar';
+import ManageAllOrders from '../ManageAllOrders/ManageAllOrders';
+import ManageCars from '../ManageCars/ManageCars';
 
 
 const Dashboard = () => {
@@ -53,9 +55,14 @@ const Dashboard = () => {
                         admin
                             ?
                             <>
-                                <Link to={`${url}/make-admin`}>
+                                <Link to={`${url}/manage-orders`}>
                                     <Button className="btn app-main-btn col-10 mb-3" >
-                                        <FontAwesomeIcon icon={faUserPlus} /> Make Admin
+                                        <FontAwesomeIcon icon={faBorderAll} /> Manage Orders
+                                    </Button>
+                                </Link>
+                                <Link to={`${url}/manage-cars`}>
+                                    <Button className="btn app-main-btn col-10 mb-3" >
+                                        <FontAwesomeIcon icon={faCar} /> Manage Cars
                                     </Button>
                                 </Link>
                                 <Link to={`${url}/add-car`}>
@@ -63,6 +70,13 @@ const Dashboard = () => {
                                         <FontAwesomeIcon icon={faPlus} /> Add New Car
                                     </Button>
                                 </Link>
+                                <Link to={`${url}/make-admin`}>
+                                    <Button className="btn app-main-btn col-10 mb-3" >
+                                        <FontAwesomeIcon icon={faUserPlus} /> Make Admin
+                                    </Button>
+                                </Link>
+
+
                             </>
                             :
                             <>
@@ -169,6 +183,12 @@ const Dashboard = () => {
                         </AdminRoute>
                         <AdminRoute path={`${path}/add-car`}>
                             <AddCar></AddCar>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/manage-orders`}>
+                            <ManageAllOrders></ManageAllOrders>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/manage-cars`}>
+                            <ManageCars></ManageCars>
                         </AdminRoute>
                     </Switch>
                 </div>

@@ -9,6 +9,7 @@ initializeAuthentication();
 
 const useFirebase = () => {
     const [user, setUser] = useState({})
+    const [admin, setAdmin] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
     const facebookProvider = new FacebookAuthProvider();
@@ -159,8 +160,18 @@ const useFirebase = () => {
             .then()
     }
 
+
+    //Checking and then setting user admin or not
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
+
+
     return {
         user,
+        admin,
         isLoading,
         registerUser,
         loginUser,

@@ -17,13 +17,15 @@ import Pay from '../Pay/Pay';
 import MyOrders from '../MyOrders/MyOrders';
 import AddReview from '../AddReview/AddReview';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import AdminRoute from '../../AdminRoute/AdminRoute';
+import AddCar from '../AddCar/AddCar';
 
 
 const Dashboard = () => {
     const [toggled, setToggled] = useState(false);
     let { path, url } = useRouteMatch();
     const history = useHistory();
-    const { user, logOut } = useAuth();
+    const { user, logOut, admin } = useAuth();
     const [offCanvasShow, setOffCanvasShow] = useState(false);
     const handleOffCanvasClose = () => setOffCanvasShow(false);
     const handleOffCanvasShow = () => setOffCanvasShow(true);
@@ -47,30 +49,39 @@ const Dashboard = () => {
                     <Link to={`${url}`}><Button className="btn app-main-btn col-10 mb-3 " >
                         <FontAwesomeIcon icon={faTachometerAlt} /> Dashboard</Button></Link>
 
-                    <Link to={`${url}/make-admin`}>
-                        <Button className="btn app-main-btn col-10 mb-3" >
-                            <FontAwesomeIcon icon={faUserPlus} /> Make Admin
-                        </Button>
-                    </Link>
-                    <Link to={`${url}/add-car`}>
-                        <Button className="btn app-main-btn col-10 mb-3" >
-                            <FontAwesomeIcon icon={faPlus} /> Add New Car
-                        </Button>
-                    </Link>
+                    {
+                        admin
+                            ?
+                            <>
+                                <Link to={`${url}/make-admin`}>
+                                    <Button className="btn app-main-btn col-10 mb-3" >
+                                        <FontAwesomeIcon icon={faUserPlus} /> Make Admin
+                                    </Button>
+                                </Link>
+                                <Link to={`${url}/add-car`}>
+                                    <Button className="btn app-main-btn col-10 mb-3" >
+                                        <FontAwesomeIcon icon={faPlus} /> Add New Car
+                                    </Button>
+                                </Link>
+                            </>
+                            :
+                            <>
+                                <Link to={`${url}/pay`}>
+                                    <Button className="btn app-main-btn col-10 mb-3" >
+                                        <FontAwesomeIcon icon={faMoneyCheckAlt} /> Pay</Button>
+                                </Link>
+                                <Link to={`${url}/my-orders`}>
+                                    <Button className="btn app-main-btn col-10 mb-3" ><FontAwesomeIcon icon={faBorderAll} /> My Orders</Button>
+                                </Link>
+
+                                <Link to={`${url}/add-review`}>
+                                    <Button className="btn app-main-btn col-10 mb-3" ><FontAwesomeIcon icon={faPen} /> Add Review</Button>
+                                </Link>
+                            </>
+                    }
 
 
 
-                    <Link to={`${url}/pay`}>
-                        <Button className="btn app-main-btn col-10 mb-3" >
-                            <FontAwesomeIcon icon={faMoneyCheckAlt} /> Pay</Button>
-                    </Link>
-                    <Link to={`${url}/my-orders`}>
-                        <Button className="btn app-main-btn col-10 mb-3" ><FontAwesomeIcon icon={faBorderAll} /> My Orders</Button>
-                    </Link>
-
-                    <Link to={`${url}/add-review`}>
-                        <Button className="btn app-main-btn col-10 mb-3" ><FontAwesomeIcon icon={faPen} /> Add Review</Button>
-                    </Link>
 
                 </div>
             </div>
@@ -147,9 +158,12 @@ const Dashboard = () => {
                         <Route path={`${path}/add-review`}>
                             <AddReview></AddReview>
                         </Route>
-                        <Route path={`${path}/make-admin`}>
+                        <AdminRoute path={`${path}/make-admin`}>
                             <MakeAdmin></MakeAdmin>
-                        </Route>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/add-car`}>
+                            <AddCar></AddCar>
+                        </AdminRoute>
                     </Switch>
                 </div>
             </div>

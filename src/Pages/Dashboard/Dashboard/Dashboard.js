@@ -12,10 +12,11 @@ import { Button, Offcanvas } from 'react-bootstrap';
 import DashboardHome from '../DashboardHome/DashboardHome';
 import useAuth from '../../../hooks/useAuth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faUserCircle, faSignOutAlt, faBorderAll, faMoneyCheckAlt, faPen, faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faUserPlus, faHome, faUserCircle, faSignOutAlt, faBorderAll, faMoneyCheckAlt, faPen, faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
 import Pay from '../Pay/Pay';
 import MyOrders from '../MyOrders/MyOrders';
 import AddReview from '../AddReview/AddReview';
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
 
 
 const Dashboard = () => {
@@ -46,6 +47,18 @@ const Dashboard = () => {
                     <Link to={`${url}`}><Button className="btn app-main-btn col-10 mb-3 " >
                         <FontAwesomeIcon icon={faTachometerAlt} /> Dashboard</Button></Link>
 
+                    <Link to={`${url}/make-admin`}>
+                        <Button className="btn app-main-btn col-10 mb-3" >
+                            <FontAwesomeIcon icon={faUserPlus} /> Make Admin
+                        </Button>
+                    </Link>
+                    <Link to={`${url}/add-car`}>
+                        <Button className="btn app-main-btn col-10 mb-3" >
+                            <FontAwesomeIcon icon={faPlus} /> Add New Car
+                        </Button>
+                    </Link>
+
+
 
                     <Link to={`${url}/pay`}>
                         <Button className="btn app-main-btn col-10 mb-3" >
@@ -58,20 +71,6 @@ const Dashboard = () => {
                     <Link to={`${url}/add-review`}>
                         <Button className="btn app-main-btn col-10 mb-3" ><FontAwesomeIcon icon={faPen} /> Add Review</Button>
                     </Link>
-
-                    {/* <NavLink to="/make-admin">
-                                        <button
-                                            onClick={() => {
-                                                handleOffCanvasClose();
-                                            }}
-                                            className="drawer-buttons btn btn-primary w-100 mb-2"><FontAwesomeIcon icon={faUserPlus} /> Make Admin</button>
-                                    </NavLink>
-                                    <NavLink to="/add-course">
-                                        <button onClick={() => {
-                                            handleOffCanvasClose();
-                                        }}
-                                            className="drawer-buttons btn btn-primary w-100 mb-2"><FontAwesomeIcon icon={faPlus} /> Add Course</button>
-                                    </NavLink> */}
 
                 </div>
             </div>
@@ -147,6 +146,9 @@ const Dashboard = () => {
                         </Route>
                         <Route path={`${path}/add-review`}>
                             <AddReview></AddReview>
+                        </Route>
+                        <Route path={`${path}/make-admin`}>
+                            <MakeAdmin></MakeAdmin>
                         </Route>
                     </Switch>
                 </div>

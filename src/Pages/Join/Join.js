@@ -57,7 +57,8 @@ const Join = () => {
                             onBlur={handleOnBlur}
                             name="lastName"
                             type="text" className="form-control" id="floatingSignUpLastName" placeholder="name@example.com"
-                            required />
+                            defaultValue=""
+                        />
                         <label htmlFor="floatingSignUpLastName">Last Name</label>
                     </div>
                     <div className="form-floating mb-3">

@@ -1,20 +1,24 @@
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
-const MyOrder = () => {
+const MyOrder = ({ order }) => {
+    console.log(order);
+    const [car, setCar] = useState({});
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/car/${order.modelID}`)
+            .then(res => res.json())
+            .then(data => setCar(data))
+    }, [order.modelID])
+
     return (
         <div className="col">
-            <div class="card mb-3 h-100" style={{ maxWidth: '540px' }}>
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="..." class="img-fluid rounded-start" alt="..." />
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
+            <div className="card w-50">
+                <div className="card-body">
+                    <h5 className="card-title">Card title</h5>
+                    <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="!#" className="btn btn-primary">Button</a>
                 </div>
             </div>
         </div>

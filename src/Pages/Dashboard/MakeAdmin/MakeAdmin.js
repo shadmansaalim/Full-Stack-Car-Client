@@ -34,9 +34,9 @@ const MakeAdmin = () => {
     return (
         <div className="text-start mt-5 col-lg-6">
             <h5>Please enter email address of the user whom you want to make admin</h5>
-            <form onSubmit={handleAdminSubmit} class="input-group mt-4">
-                <input onBlur={handleOnBlur} type="text" class="form-control" placeholder="User Email" aria-label="User Email" aria-describedby="button-addon2" />
-                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Submit</button>
+            <form onSubmit={handleAdminSubmit} className="input-group mt-4">
+                <input onBlur={handleOnBlur} type="text" className="form-control" placeholder="User Email" aria-label="User Email" aria-describedby="button-addon2" />
+                <button className="btn btn-outline-secondary" type="submit" id="button-addon2">Submit</button>
             </form>
         </div>
     );

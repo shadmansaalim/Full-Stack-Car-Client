@@ -84,98 +84,98 @@ const CarDetails = () => {
                                 <Modal.Title>Provide delivery details</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                <section class="order-form my-4 mx-4">
+                                <section className="order-form my-4 mx-4">
 
 
-                                    <div class="row">
-                                        <form class="col-12" onSubmit={handleSubmit(onSubmit)}>
+                                    <div className="row">
+                                        <form className="col-12" onSubmit={handleSubmit(onSubmit)}>
 
-                                            <div class="row mx-4">
-                                                <div class="col-12 mb-2">
-                                                    <label class="order-form-label">Name</label>
+                                            <div className="row mx-4">
+                                                <div className="col-12 mb-2">
+                                                    <label className="order-form-label">Name</label>
                                                 </div>
-                                                <div class="col-12 col-sm-6">
+                                                <div className="col-12 col-sm-6">
                                                     <input type="text"
                                                         defaultValue={user?.displayName?.split(' ')[0]}
-                                                        class="order-form-input" placeholder="First" required {...register("firstName")} />
+                                                        className="order-form-input" placeholder="First" required {...register("firstName")} />
                                                 </div>
-                                                <div class="col-12 col-sm-6 mt-2 mt-sm-0">
+                                                <div className="col-12 col-sm-6 mt-2 mt-sm-0">
                                                     <input type="text"
                                                         defaultValue={user?.displayName?.split(' ')[1]}
-                                                        class="order-form-input" placeholder="Last" {...register("lastName")} />
+                                                        className="order-form-input" placeholder="Last" {...register("lastName")} />
                                                 </div>
                                             </div>
 
-                                            <div class="row mt-3 mx-4">
-                                                <div class="col-12">
-                                                    <label class="order-form-label">Email</label>
+                                            <div className="row mt-3 mx-4">
+                                                <div className="col-12">
+                                                    <label className="order-form-label">Email</label>
                                                 </div>
-                                                <div class="col-12">
+                                                <div className="col-12">
                                                     <input type="email"
                                                         defaultValue={user?.email}
-                                                        class="order-form-input" required placeholder=" " {...register("email")} />
+                                                        className="order-form-input" required placeholder=" " {...register("email")} />
                                                 </div>
                                             </div>
-                                            <div class="row mt-3 mx-4">
-                                                <div class="col-12">
-                                                    <label class="order-form-label">Phone</label>
+                                            <div className="row mt-3 mx-4">
+                                                <div className="col-12">
+                                                    <label className="order-form-label">Phone</label>
                                                 </div>
-                                                <div class="col-12">
+                                                <div className="col-12">
                                                     <input type="number"
-                                                        class="order-form-input" required placeholder="Your Number" {...register("phone")} />
+                                                        className="order-form-input" required placeholder="Your Number" {...register("phone")} />
                                                 </div>
                                             </div>
 
-                                            <div class="row mt-3 mx-4">
-                                                <div class="col-12">
-                                                    <label class="order-form-label">Car Model</label>
+                                            <div className="row mt-3 mx-4">
+                                                <div className="col-12">
+                                                    <label className="order-form-label">Car Model</label>
                                                 </div>
-                                                <div class="col-12">
+                                                <div className="col-12">
                                                     <input type="text"
                                                         disabled
                                                         defaultValue={car?.modelName}
-                                                        class="order-form-input" placeholder=" " required {...register("modelName")} />
+                                                        className="order-form-input" placeholder=" " required {...register("modelName")} />
                                                 </div>
                                             </div>
 
 
 
-                                            <div class="row mt-3 mx-4">
-                                                <div class="col-12">
-                                                    <label class="order-form-label">Address</label>
+                                            <div className="row mt-3 mx-4">
+                                                <div className="col-12">
+                                                    <label className="order-form-label">Address</label>
                                                 </div>
-                                                <div class="col-12">
-                                                    <input type="text" class="order-form-input" placeholder="Street Address" required {...register("streetAddress")} />
+                                                <div className="col-12">
+                                                    <input type="text" className="order-form-input" placeholder="Street Address" required {...register("streetAddress")} />
                                                 </div>
-                                                <div class="col-12 mt-2">
-                                                    <input type="text" class="order-form-input" placeholder="Street Address Line 2" required {...register("streetAddressLine2")} />
+                                                <div className="col-12 mt-2">
+                                                    <input type="text" className="order-form-input" placeholder="Street Address Line 2" required {...register("streetAddressLine2")} />
                                                 </div>
-                                                <div class="col-12 col-sm-6 mt-2 pr-sm-2">
-                                                    <input type="text" class="order-form-input" placeholder="City" required {...register("city")} />
+                                                <div className="col-12 col-sm-6 mt-2 pr-sm-2">
+                                                    <input type="text" className="order-form-input" placeholder="City" required {...register("city")} />
                                                 </div>
-                                                <div class="col-12 col-sm-6 mt-2 pl-sm-0">
-                                                    <input type="text" class="order-form-input" placeholder="Region" required {...register("region")} />
+                                                <div className="col-12 col-sm-6 mt-2 pl-sm-0">
+                                                    <input type="text" className="order-form-input" placeholder="Region" required {...register("region")} />
                                                 </div>
-                                                <div class="col-12 col-sm-6 mt-2 pr-sm-2">
-                                                    <input type="text" class="order-form-input" placeholder="Zip Code" required {...register("zipCode")} />
+                                                <div className="col-12 col-sm-6 mt-2 pr-sm-2">
+                                                    <input type="text" className="order-form-input" placeholder="Zip Code" required {...register("zipCode")} />
                                                 </div>
-                                                <div class="col-12 col-sm-6 mt-2 pl-sm-0">
-                                                    <input type="text" class="order-form-input" placeholder="Country" required {...register("country")} />
+                                                <div className="col-12 col-sm-6 mt-2 pl-sm-0">
+                                                    <input type="text" className="order-form-input" placeholder="Country" required {...register("country")} />
                                                 </div>
                                             </div>
 
-                                            <div class="row mt-3 mx-4">
-                                                <div class="col-12">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" name="validation" id="validation" value="1" required />
-                                                        <label for="validation" class="form-check-label">I know what I need to know</label>
+                                            <div className="row mt-3 mx-4">
+                                                <div className="col-12">
+                                                    <div className="form-check">
+                                                        <input type="checkbox" className="form-check-input" name="validation" id="validation" value="1" required />
+                                                        <label for="validation" className="form-check-label">I know what I need to know</label>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="row mt-3">
-                                                <div class="col-12">
-                                                    <button type="submit" id="btnSubmit" class="btn btn-dark d-block mx-auto btn-submit">Submit</button>
+                                            <div className="row mt-3">
+                                                <div className="col-12">
+                                                    <button type="submit" id="btnSubmit" className="btn btn-dark d-block mx-auto btn-submit">Submit</button>
                                                 </div>
                                             </div>
 

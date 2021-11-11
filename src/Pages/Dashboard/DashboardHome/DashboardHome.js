@@ -3,53 +3,53 @@ import React from 'react';
 const DashboardHome = () => {
     return (
         <div>
-            <div class="row g-3 my-2 text-white">
-                <div class="col-md-3">
-                    <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded" style={{ backgroundColor: '#007cc2' }}>
+            <div className="row g-3 my-2 text-white">
+                <div className="col-md-3">
+                    <div className="p-3 shadow-sm d-flex justify-content-around align-items-center rounded" style={{ backgroundColor: '#007cc2' }}>
                         <div>
-                            <h3 class="fs-2">720</h3>
-                            <p class="fs-5">Products</p>
+                            <h3 className="fs-2">720</h3>
+                            <p className="fs-5">Products</p>
                         </div>
-                        <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                        <i className="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="p-3  shadow-sm d-flex justify-content-around align-items-center rounded" style={{ backgroundColor: '#007cc2' }}>
+                <div className="col-md-3">
+                    <div className="p-3  shadow-sm d-flex justify-content-around align-items-center rounded" style={{ backgroundColor: '#007cc2' }}>
                         <div>
-                            <h3 class="fs-2">4920</h3>
-                            <p class="fs-5">Sales</p>
+                            <h3 className="fs-2">4920</h3>
+                            <p className="fs-5">Sales</p>
                         </div>
                         <i
-                            class="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                            className="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded" style={{ backgroundColor: '#007cc2' }}>
+                <div className="col-md-3">
+                    <div className="p-3 shadow-sm d-flex justify-content-around align-items-center rounded" style={{ backgroundColor: '#007cc2' }}>
                         <div>
-                            <h3 class="fs-2">3899</h3>
-                            <p class="fs-5">Delivery</p>
+                            <h3 className="fs-2">3899</h3>
+                            <p className="fs-5">Delivery</p>
                         </div>
-                        <i class="fas fa-truck fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                        <i className="fas fa-truck fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <div class="p-3  shadow-sm d-flex justify-content-around align-items-center rounded" style={{ backgroundColor: '#007cc2' }}>
+                <div className="col-md-3">
+                    <div className="p-3  shadow-sm d-flex justify-content-around align-items-center rounded" style={{ backgroundColor: '#007cc2' }}>
                         <div>
-                            <h3 class="fs-2">%25</h3>
-                            <p class="fs-5">Increase</p>
+                            <h3 className="fs-2">%25</h3>
+                            <p className="fs-5">Increase</p>
                         </div>
-                        <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                        <i className="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                     </div>
                 </div>
             </div>
             {/* 
-            <div class="row my-5">
-                <h3 class="fs-4 mb-3">Recent Orders</h3>
-                <div class="col">
-                    <table class="table bg-white rounded shadow-sm  table-hover">
+            <div className="row my-5">
+                <h3 className="fs-4 mb-3">Recent Orders</h3>
+                <div className="col">
+                    <table className="table bg-white rounded shadow-sm  table-hover">
                         <thead>
                             <tr>
                                 <th scope="col" width="50">#</th>

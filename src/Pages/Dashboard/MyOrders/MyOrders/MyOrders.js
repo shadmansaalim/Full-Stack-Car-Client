@@ -34,7 +34,8 @@ const MyOrders = () => {
 
     return (
         <div className="container">
-            <div className="row row-cols-1 row-cols-md-3 g-4  my-5">
+            <h4>Order History</h4>
+            <div className="row row-cols-1 row-cols-md-3 g-4  mt-3">
                 {
                     myOrders.map(order => <MyOrder
                         order={order}
@@ -47,10 +48,3 @@ const MyOrders = () => {
 
 export default MyOrders;
 
-{/* <div className="card w-50">
-  <div className="card-body">
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" className="btn btn-primary">Button</a>
-  </div>
-</div> */}

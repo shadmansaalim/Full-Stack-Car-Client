@@ -147,7 +147,13 @@ const Dashboard = () => {
 
                     <Switch>
                         <Route exact path={path}>
-                            <DashboardHome></DashboardHome>
+                            {
+                                admin
+                                    ?
+                                    <DashboardHome></DashboardHome>
+                                    :
+                                    <h3 className="text-start mt-4">Hello {user.displayName}</h3>
+                            }
                         </Route>
                         <Route path={`${path}/pay`}>
                             <Pay></Pay>

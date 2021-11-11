@@ -61,12 +61,14 @@ const AddCar = () => {
                         </div>
                         <div className="row mt-3 mx-4">
                             <div className="col-12 mb-2">
-                                <label className="order-form-label">ID & Type</label>
+                                <label className="order-form-label">Price & Type</label>
                             </div>
-                            <div className="col-12 col-sm-6">
-                                <input type="number"
-                                    className="order-form-input" placeholder="Car ID" required {...register("carID")} />
+
+                            <div className="col-12 col-sm-6 mt-2 mt-sm-0">
+                                <input type="text"
+                                    className="order-form-input" required placeholder="Price" {...register("price")} />
                             </div>
+
                             <div className="col-12 col-sm-6 mt-2 mt-sm-0">
                                 <input type="text"
                                     className="order-form-input" placeholder="Body Type" required {...register("bodyType")} />
@@ -86,15 +88,6 @@ const AddCar = () => {
                             </div>
                         </div>
 
-                        <div className="row mt-3 mx-4">
-                            <div className="col-12">
-                                <label className="order-form-label">Price</label>
-                            </div>
-                            <div className="col-12">
-                                <input type="text"
-                                    className="order-form-input" required placeholder="Price" {...register("price")} />
-                            </div>
-                        </div>
 
                         <div className="row mt-3 mx-4">
                             <div className="col-12">

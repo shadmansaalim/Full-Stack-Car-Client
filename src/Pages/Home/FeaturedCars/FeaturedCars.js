@@ -22,7 +22,7 @@ const FeaturedCars = () => {
                 <Row xs={1} md={3} className="g-4">
                     {
                         featuredCars.map(car => <Car
-                            key={car.carID}
+                            key={car._id}
                             car={car}
                         >
                         </Car>)

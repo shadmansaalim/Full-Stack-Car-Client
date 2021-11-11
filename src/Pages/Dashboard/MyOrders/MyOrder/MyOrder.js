@@ -4,7 +4,8 @@ import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-const MyOrder = ({ order }) => {
+
+const MyOrder = ({ order, handleDeleteOrder }) => {
     console.log(order);
     const [car, setCar] = useState({});
 
@@ -13,6 +14,7 @@ const MyOrder = ({ order }) => {
             .then(res => res.json())
             .then(data => setCar(data))
     }, [order.modelID])
+
 
     return (
         <div class="col">
@@ -25,7 +27,9 @@ const MyOrder = ({ order }) => {
                             <h5 className="m-0">Order Details</h5>
                             <div>
                                 <FontAwesomeIcon className="fs-4 me-2 text-dark" icon={faEdit} />
-                                <FontAwesomeIcon className="fs-4 text-danger" icon={faTrash} />
+                                <FontAwesomeIcon onClick={() => {
+                                    handleDeleteOrder(order._id)
+                                }} className="fs-4 text-danger" icon={faTrash} />
                             </div>
                         </span>
                         <hr />

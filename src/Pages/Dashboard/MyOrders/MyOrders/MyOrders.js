@@ -6,6 +6,7 @@ import swal from 'sweetalert';
 import { useHistory } from 'react-router';
 import useAuth from '../../../../hooks/useAuth';
 
+
 const MyOrders = () => {
     const { user } = useAuth();
     const [myOrders, setMyOrders] = useState([]);
@@ -32,6 +33,36 @@ const MyOrders = () => {
 
     }, [user.email])
 
+    const handleDeleteOrder = id => {
+        swal({
+            title: "Are you sure?",
+            text: `Your ordered car will be cancelled!`,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    const url = `http://localhost:5000/orders/${id}`;
+                    fetch(url, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.deletedCount > 0) {
+                                const remainingOrders = myOrders.filter(order => order._id !== id);
+                                setMyOrders(remainingOrders);
+                            }
+                        })
+                    swal("Order Cancelled Successfully", {
+                        icon: "success",
+                    });
+
+                }
+            });
+
+    }
+
     return (
         <div className="container">
             <h4>Order History</h4>
@@ -39,6 +70,7 @@ const MyOrders = () => {
                 {
                     myOrders.map(order => <MyOrder
                         order={order}
+                        handleDeleteOrder={handleDeleteOrder}
                     ></MyOrder>)
                 }
             </div>

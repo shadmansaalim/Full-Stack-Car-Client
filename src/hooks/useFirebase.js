@@ -160,6 +160,11 @@ const useFirebase = () => {
             .then()
     }
 
+    // const updateAdminState = status => {
+    //     setAdmin(status)
+
+    // }
+
 
     //Checking and then setting user admin or not
     useEffect(() => {
@@ -167,6 +172,7 @@ const useFirebase = () => {
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
     }, [user.email])
+
 
 
     return {

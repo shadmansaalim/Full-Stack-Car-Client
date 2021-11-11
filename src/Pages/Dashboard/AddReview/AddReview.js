@@ -24,7 +24,7 @@ const AddReview = () => {
             .then(res => res.json())
             .then(result => {
                 if (result.insertedId) {
-                    swal("Thank you for your feedback", "We have added your feedback on our landing page", "success");
+                    swal("Thank you for your review", "We have added your review on our landing page", "success");
                     reset();
                 }
             })
@@ -44,8 +44,8 @@ const AddReview = () => {
                                 <label htmlFor="floatingServiceName"><small>Your Name</small></label>
                             </div>
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingServiceDescription" style={{ height: '100px' }} {...register("feedback")}></textarea>
-                                <label htmlFor="floatingServiceDescription">Feedback</label>
+                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingServiceDescription" style={{ height: '100px' }} {...register("review")}></textarea>
+                                <label htmlFor="floatingServiceDescription">Review</label>
                             </div>
                             <div className="text-start">
                                 <Rating

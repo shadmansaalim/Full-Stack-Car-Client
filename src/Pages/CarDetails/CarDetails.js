@@ -102,7 +102,7 @@ const CarDetails = () => {
                                                 <div class="col-12 col-sm-6 mt-2 mt-sm-0">
                                                     <input type="text"
                                                         defaultValue={user?.displayName?.split(' ')[1]}
-                                                        class="order-form-input" placeholder="Last" required {...register("lastName")} />
+                                                        class="order-form-input" placeholder="Last" {...register("lastName")} />
                                                 </div>
                                             </div>
 

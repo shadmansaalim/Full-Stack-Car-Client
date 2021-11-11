@@ -14,7 +14,7 @@ import useAuth from '../../../hooks/useAuth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faUserPlus, faHome, faUserCircle, faSignOutAlt, faBorderAll, faMoneyCheckAlt, faPen, faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
 import Pay from '../Pay/Pay';
-import MyOrders from '../MyOrders/MyOrders';
+import MyOrders from '../MyOrders/MyOrders/MyOrders';
 import AddReview from '../AddReview/AddReview';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../AdminRoute/AdminRoute';

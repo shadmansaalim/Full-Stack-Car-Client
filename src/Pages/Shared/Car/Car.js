@@ -9,7 +9,7 @@ const Car = ({ car }) => {
     const { _id, modelName, bodyType, img, price } = car;
     return (
         <Col>
-            <Card className="h-100">
+            <Card className="h-100 car">
                 <Card.Img variant="top" src={img} />
                 <Card.Body className="text-dark">
                     <Card.Title>{modelName} ({bodyType})</Card.Title>

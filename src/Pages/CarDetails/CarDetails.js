@@ -45,8 +45,8 @@ const CarDetails = () => {
         })
             .then(res => res.json())
             .then(result => {
-                if (result.insertedId) {
-                    toast.success('Order Place Successfully')
+                if (result.insertedId || result.modifiedCount) {
+                    toast.success('Order Placed Successfully')
                     handleClose();
                     reset();
 

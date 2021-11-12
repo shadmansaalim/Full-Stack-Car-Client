@@ -10,7 +10,7 @@ const FeaturedCars = () => {
     const size = 6;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/cars?size=${size}`)
+        fetch(`https://pure-sands-37131.herokuapp.com/cars?size=${size}`)
             .then(res => res.json())
             .then(cars => setFeaturedCars(cars))
 

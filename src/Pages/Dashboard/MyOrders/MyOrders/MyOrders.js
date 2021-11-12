@@ -13,7 +13,7 @@ const MyOrders = () => {
     const history = useHistory();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/my-orders?email=${user.email}`, {
+        fetch(`https://pure-sands-37131.herokuapp.com/my-orders?email=${user.email}`, {
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('carIdToken')}`
             }
@@ -43,7 +43,7 @@ const MyOrders = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    const url = `http://localhost:5000/orders/${id}`;
+                    const url = `https://pure-sands-37131.herokuapp.com/orders/${id}`;
                     fetch(url, {
                         method: 'DELETE'
                     })

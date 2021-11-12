@@ -13,7 +13,7 @@ const ManageAllOrders = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allOrders?email=${user.email}`, {
+        fetch(`https://pure-sands-37131.herokuapp.com/allOrders?email=${user.email}`, {
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('carIdToken')}`
             }
@@ -42,7 +42,7 @@ const ManageAllOrders = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    const url = `http://localhost:5000/orders/${id}`;
+                    const url = `https://pure-sands-37131.herokuapp.com/orders/${id}`;
                     fetch(url, {
                         method: 'DELETE'
                     })
@@ -76,7 +76,7 @@ const ManageAllOrders = () => {
         })
             .then((willUpdate) => {
                 if (willUpdate) {
-                    const url = `http://localhost:5000/ordersUpdate/${id}`;
+                    const url = `https://pure-sands-37131.herokuapp.com/ordersUpdate/${id}`;
                     fetch(url, {
                         method: "PUT",
                         headers: {

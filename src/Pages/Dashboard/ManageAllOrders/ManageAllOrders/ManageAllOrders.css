@@ -9,6 +9,10 @@
     border: 0 solid transparent;
     border-radius: 0;
 }
+.all-orders table{
+    background-color: rgba(0, 0, 0, 0.897) !important;
+    color: white !important;
+}
 .btn-circle.btn-lg, .btn-group-lg>.btn-circle.btn {
     width: 50px;
     height: 50px;

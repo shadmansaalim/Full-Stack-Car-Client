@@ -96,8 +96,8 @@ const Order = ({ order, index }) => {
                 </select>
             </td>
             <td>
-                <button type="button" class="btn btn-outline-dark btn-circle btn-lg btn-circle me-2"><i class="fa fa-trash"></i> </button>
-                <button type="button" class="btn btn-outline-dark btn-circle btn-lg btn-circle "><i class="fa fa-edit"></i> </button>
+                <button type="button" class="btn btn-outline-light btn-circle btn-lg btn-circle me-lg-2"><i class="fa fa-trash"></i> </button>
+                <button type="button" class="btn btn-outline-light btn-circle btn-lg btn-circle mt-2 mt-lg-0"><i class="fa fa-edit"></i> </button>
 
             </td>
         </tr>

@@ -11,11 +11,12 @@ const Car = ({ car, handleDeleteCar }) => {
     const { _id, modelName, bodyType, img, price, condition, available } = car;
     const { admin } = useAuth();
     const location = useLocation();
+    console.log(location);
     return (
         <Col>
-            <Card className="h-100 car shadow">
-                <Card.Img className="p-4" variant="top" src={img} />
-                <Card.Body className="text-dark p-3">
+            <Card className="h-100 car">
+                <Card.Img variant="top" src={img} />
+                <Card.Body className="text-dark">
                     <Card.Title>{modelName} ({bodyType})</Card.Title>
                     <Card.Text>
                         <small>Drive away from</small>
@@ -35,7 +36,10 @@ const Car = ({ car, handleDeleteCar }) => {
                             </>
                             :
                             <>
-                                <div className="text-start mb-2 d-flex align-items-center justify-content-between">
+
+                                <div className={location.pathname === "/cars" ? "text-start mb-2 d-flex flex-column align-items-center justify-content-center" :
+                                    "text-start mb-2 d-flex align-items-center justify-content-between"
+                                }>
 
                                     <div>
                                         <button className={
@@ -50,7 +54,7 @@ const Car = ({ car, handleDeleteCar }) => {
                                     </div>
 
                                     <Rating
-                                        className="me-1"
+                                        className={location.pathname === "/cars" ? "mt-2" : "me-1"}
                                         initialRating="4.5"
                                         emptySymbol="far fa-star icon-color"
                                         fullSymbol="fas fa-star icon-color"

@@ -38,12 +38,6 @@ const Navigation = () => {
                                 fontWeight: "bold",
                                 color: "#0275d8"
                             }}>Cars</NavLink>
-                        <NavLink className="text-decoration-none me-lg-3" exact to="/reviews"
-                            style={{ color: '#161c2d' }}
-                            activeStyle={{
-                                fontWeight: "bold",
-                                color: "#0275d8"
-                            }}>Reviews</NavLink>
                         {
                             user.email
                             &&

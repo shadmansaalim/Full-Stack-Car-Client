@@ -100,40 +100,52 @@ const ManageAllOrders = () => {
 
 
     return (
-        <div class="container">
-            <h4 className="text-start bg-dark text-white p-3 rounded-3 mt-3 mb-5">Manage All Orders</h4>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="all-orders card">
-                        <div class="table-responsive">
-                            <table class="table no-wrap user-table mb-0">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
-                                        <th scope="col" class="border-0 text-uppercase font-medium">User Info</th>
-                                        <th scope="col" class="border-0 text-uppercase font-medium">Order Details</th>
-                                        <th scope="col" class="border-0 text-uppercase font-medium">Delivery</th>
-                                        <th scope="col" class="border-0 text-uppercase font-medium">Category</th>
-                                        <th scope="col" class="border-0 text-uppercase font-medium">Manage</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+        <div>
+            {
+                allOrders.length
+                    ?
+                    <>
+                        <h4 className="text-start bg-dark text-white p-3 rounded-3 mt-3 mb-5">Manage All Orders</h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="all-orders card">
+                                    <div class="table-responsive">
+                                        <table class="table no-wrap user-table mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
+                                                    <th scope="col" class="border-0 text-uppercase font-medium">User Info</th>
+                                                    <th scope="col" class="border-0 text-uppercase font-medium">Order Details</th>
+                                                    <th scope="col" class="border-0 text-uppercase font-medium">Delivery</th>
+                                                    <th scope="col" class="border-0 text-uppercase font-medium">Category</th>
+                                                    <th scope="col" class="border-0 text-uppercase font-medium">Manage</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
 
-                                    {
-                                        allOrders.map((order, index) => <Order
-                                            index={index}
-                                            order={order}
-                                            updateOrderStatus={updateOrderStatus}
-                                            handleDeleteOrder={handleDeleteOrder}
-                                        ></Order>)
-                                    }
-                                </tbody>
-                            </table>
+                                                {
+                                                    allOrders.map((order, index) => <Order
+                                                        index={index}
+                                                        order={order}
+                                                        updateOrderStatus={updateOrderStatus}
+                                                        handleDeleteOrder={handleDeleteOrder}
+                                                    ></Order>)
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </>
+                    :
+                    <div class="spinner d-flex align-items-center justify-content-center">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
                     </div>
-                </div>
-            </div>
+            }
         </div>
     );
 };

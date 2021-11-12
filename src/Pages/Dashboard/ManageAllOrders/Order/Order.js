@@ -60,7 +60,7 @@ const Order = ({ index, order, updateOrderStatus, handleDeleteOrder }) => {
             <td>
                 <button onClick={() => {
                     handleDeleteOrder(_id)
-                }} type="button" class="btn btn-outline-light btn-circle btn-lg btn-circle me-lg-2"><i class="fa fa-trash"></i> </button>
+                }} type="button" class="btn btn-outline-danger btn-circle btn-lg btn-circle me-lg-2"><i class="fa fa-trash"></i> </button>
                 <button type="button" class="btn btn-outline-light btn-circle btn-lg btn-circle mt-2 mt-lg-0"><i class="fa fa-edit"></i> </button>
 
             </td>

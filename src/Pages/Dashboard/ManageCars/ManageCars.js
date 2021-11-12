@@ -45,20 +45,31 @@ const ManageCars = () => {
 
 
     return (
-        <div className="mt-4">
-            <Container>
-                <section className="my-5">
-                    <Row xs={1} md={3} className="g-4">
-                        {
-                            cars.map(car => <Car
-                                key={car._id}
-                                car={car}
-                                handleDeleteCar={handleDeleteCar}
-                            ></Car>)
-                        }
-                    </Row>
-                </section>
-            </Container>
+        <div>
+            {
+                cars.length
+                    ?
+
+                    <Container className="mt-4">
+                        <section className="my-5">
+                            <Row xs={1} md={3} className="g-4">
+                                {
+                                    cars.map(car => <Car
+                                        key={car._id}
+                                        car={car}
+                                        handleDeleteCar={handleDeleteCar}
+                                    ></Car>)
+                                }
+                            </Row>
+                        </section>
+                    </Container>
+                    :
+                    <div class="spinner d-flex align-items-center justify-content-center">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
+            }
         </div>
     );
 };

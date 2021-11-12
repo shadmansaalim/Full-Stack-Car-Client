@@ -7,8 +7,10 @@ const PrivateRoute = ({ children, ...rest }) => {
     const { user, isLoading } = useAuth();
     if (isLoading) {
         return (
-            <div className="vh-100 d-flex justify-content-center align-items-center">
-                <h1>Loading</h1>
+            <div class="spinner d-flex align-items-center justify-content-center">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
             </div>
         );
     }

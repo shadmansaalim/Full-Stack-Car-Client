@@ -16,20 +16,34 @@ const Cars = () => {
     }, [])
     return (
         <div>
-            <Navigation></Navigation>
-            <Container>
-                <section className="my-5">
-                    <Row xs={1} md={3} className="g-4">
-                        {
-                            cars.map(car => <Car
-                                key={car._id}
-                                car={car}
-                            ></Car>)
-                        }
-                    </Row>
-                </section>
-            </Container>
-            <Footer></Footer>
+            {
+                cars.length
+                    ?
+                    <>
+                        <Navigation></Navigation>
+                        <Container>
+                            <section className="my-5">
+                                <Row xs={1} md={3} lg={4} className="g-4">
+                                    {
+                                        cars.map(car => <Car
+                                            key={car._id}
+                                            car={car}
+                                        ></Car>)
+                                    }
+                                </Row>
+                            </section>
+                        </Container>
+                        <Footer></Footer>
+                    </>
+                    :
+                    <div class="spinner d-flex align-items-center justify-content-center">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
+            }
+
+
         </div>
     );
 };

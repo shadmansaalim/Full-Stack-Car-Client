@@ -6,7 +6,11 @@ const AdminRoute = ({ children, ...rest }) => {
     const { user, admin, isLoading } = useAuth();
     if (isLoading) {
         return (
-            <h2>Loading</h2>
+            <div class="spinner d-flex align-items-center justify-content-center">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
         );
 
     }

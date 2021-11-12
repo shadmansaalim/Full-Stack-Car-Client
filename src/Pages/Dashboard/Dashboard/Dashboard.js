@@ -19,7 +19,7 @@ import AddReview from '../AddReview/AddReview';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../AdminRoute/AdminRoute';
 import AddCar from '../AddCar/AddCar';
-import ManageAllOrders from '../ManageAllOrders/ManageAllOrders';
+import ManageAllOrders from '../ManageAllOrders/ManageAllOrders/ManageAllOrders';
 import ManageCars from '../ManageCars/ManageCars';
 
 

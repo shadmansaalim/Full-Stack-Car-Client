@@ -10,7 +10,7 @@ const MyOrder = ({ order, handleDeleteOrder }) => {
     const [car, setCar] = useState({});
 
     useEffect(() => {
-        fetch(`https://pure-sands-37131.herokuapp.com/car/${order.modelID}`)
+        fetch(`http://localhost:5000/car/${order.modelID}`)
             .then(res => res.json())
             .then(data => setCar(data))
     }, [order.modelID])

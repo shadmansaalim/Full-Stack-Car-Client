@@ -10,6 +10,7 @@ const ManageAllOrders = () => {
     const { user } = useAuth();
     const history = useHistory();
     const [allOrders, setAllOrders] = useState([]);
+    const [orderCount, setOrderCount] = useState(0);
 
 
     useEffect(() => {
@@ -28,7 +29,7 @@ const ManageAllOrders = () => {
                 }
             })
             .then(data => setAllOrders(data));
-    }, [])
+    }, [user.email])
 
 
     /*
@@ -102,13 +103,11 @@ const ManageAllOrders = () => {
     */
 
     return (
-        <div class="container mt-5">
+        <div class="container">
+            <h4 className="text-start bg-dark text-white p-3 rounded-3 mt-3 mb-5">Manage All Orders</h4>
             <div class="row">
                 <div class="col-md-12">
                     <div class="all-orders card">
-                        <div class="card-body">
-                            <h5 class="card-title text-uppercase mb-0">Manage Users</h5>
-                        </div>
                         <div class="table-responsive">
                             <table class="table no-wrap user-table mb-0">
                                 <thead>
@@ -125,7 +124,8 @@ const ManageAllOrders = () => {
 
 
                                     {
-                                        allOrders.map(order => <Order
+                                        allOrders.map((order, index) => <Order
+                                            index={index}
                                             order={order}
                                         ></Order>)
                                     }

@@ -1,12 +1,58 @@
 import React from 'react';
-import { InputGroup, DropdownButton, Dropdown } from 'react-bootstrap';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import swal from 'sweetalert';
 
-const Order = ({ order }) => {
+const Order = ({ order, index }) => {
     const { _id, firstName, lastName, email, phone, streetAddress, streetAddressLine2, city, region, zipcode, country, status, modelID, date, quantity } = order;
+    const [orderStatus, setOrderStatus] = useState(status);
+    const statusTypes = ["Pending", "Processing", "Shipped", "Delivered"];
+    const remainingStatus = statusTypes.filter(status => status !== orderStatus);
+
+    const [url, setUrl] = useState("");
+    const handleOrderStatusChange = (e, id) => {
+        const updatedStatus = e.target.value;
+        console.log(updatedStatus);
+        swal({
+            title: "Are you sure?",
+            text: `Order Status will be updated to ${updatedStatus}`,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willUpdate) => {
+                if (willUpdate) {
+                    setUrl(`http://localhost:5000/ordersUpdate/${id}`)
+                    setOrderStatus(updatedStatus);
+                }
+            });
+    }
+
+    useEffect(() => {
+        fetch(url, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json"
+
+            },
+            body: JSON.stringify([orderStatus])
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    swal("Order Updated Successfully", {
+                        icon: "success",
+                    });
+                }
+
+            })
+
+    }, [orderStatus, url])
+
 
     return (
         <tr className="text-start">
-            <td class="pl-4">1</td>
+            <td class="pl-4">{index + 1}</td>
             <td>
                 <h5 class="font-medium mb-0">{firstName + " " + lastName}</h5>
                 <span class="text-muted">{email}</span><br />
@@ -25,24 +71,33 @@ const Order = ({ order }) => {
                 <span class="text-muted">{zipcode},</span>
                 <span class="text-muted">{country}</span>
             </td>
-            <td className="text-dark">
-                <InputGroup className="mb-3">
-                    <DropdownButton
-                        variant="outline-dark rounded-pill"
-                        title="Dropdown"
-                        id="input-group-dropdown-1"
-                    >
-                        <Dropdown.Item href="#">Action</Dropdown.Item>
-                        <Dropdown.Item href="#">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#">Something else here</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item href="#">Separated link</Dropdown.Item>
-                    </DropdownButton>
-                </InputGroup>
+            <td>
+                <select class={
+                    orderStatus === "Pending"
+                        ?
+                        "form-select mb-3 btn-outline-dark rounded-pill"
+                        :
+                        (
+                            orderStatus === "Processing"
+                                ?
+                                "form-select mb-3 text-white btn-warning rounded-pill"
+                                :
+                                "form-select mb-3 text-white btn-success rounded-pill"
+                        )
+
+                }
+                    aria-label=".example" onChange={(e) => {
+                        handleOrderStatusChange(e, _id);
+                    }}>
+                    <option selected>{orderStatus}</option>
+                    {
+                        remainingStatus.map(status => <option value={status}>{status}</option>)
+                    }
+                </select>
             </td>
             <td>
-                <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-trash"></i> </button>
-                <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-edit"></i> </button>
+                <button type="button" class="btn btn-outline-dark btn-circle btn-lg btn-circle me-2"><i class="fa fa-trash"></i> </button>
+                <button type="button" class="btn btn-outline-dark btn-circle btn-lg btn-circle "><i class="fa fa-edit"></i> </button>
 
             </td>
         </tr>

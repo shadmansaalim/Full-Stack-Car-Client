@@ -33,7 +33,7 @@ const AddCar = () => {
     return (
         <div className="text-start">
             <h4 className="bg-dark text-white p-3 rounded-3 mt-3">Add New Car For Sale</h4>
-            <section className="order-form my-4 mx-4">
+            <section className="order-form">
                 <div className="row">
                     <form className="col-lg-8 shadow-lg p-3 rounded-3" onSubmit={handleSubmit(onSubmit)}>
 

@@ -93,9 +93,7 @@ const CarDetails = () => {
                                 <Modal.Title>Provide delivery details</Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                <section className="order-form my-4 mx-4">
-
-
+                                <section className="order-form">
                                     <div className="row">
                                         <form className="col-12" onSubmit={handleSubmit(onSubmit)}>
 

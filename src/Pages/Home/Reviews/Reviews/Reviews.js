@@ -44,14 +44,8 @@ const settings = {
     ]
 };
 
-const Reviews = () => {
-    const [reviews, setReviews] = useState([]);
+const Reviews = ({ reviews }) => {
 
-    useEffect(() => {
-        fetch('http://localhost:5000/reviews')
-            .then(res => res.json())
-            .then(data => setReviews(data));
-    }, [])
     return (
         <div style={{ marginTop: '120px', marginBottom: '80px' }}>
             <h1 className="fw-bold mb-5" style={{ fontSize: '48px' }}>Testimonials</h1>

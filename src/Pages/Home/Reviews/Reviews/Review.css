@@ -1,0 +1,6 @@
+.slick-dots li button:before
+{
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 20px;
+}

@@ -4,6 +4,7 @@ import FeaturedCars from '../FeaturedCars/FeaturedCars';
 import HomeBanner from '../HomeBanner/HomeBanner';
 import { Container } from 'react-bootstrap';
 import Footer from '../../Shared/Footer/Footer';
+import Reviews from '../Reviews/Reviews/Reviews';
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
             <HomeBanner></HomeBanner>
             <Container>
                 <FeaturedCars></FeaturedCars>
+                <Reviews></Reviews>
             </Container>
             <Footer></Footer>
         </div>

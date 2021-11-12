@@ -11,7 +11,6 @@ const Car = ({ car, handleDeleteCar }) => {
     const { _id, modelName, bodyType, img, price } = car;
     const { admin } = useAuth();
     const location = useLocation();
-    console.log(location);
     return (
         <Col>
             <Card className="h-100 car">

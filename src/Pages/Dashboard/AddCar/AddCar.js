@@ -1,23 +1,12 @@
 import React from 'react';
-import { useFieldArray, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
 
 const AddCar = () => {
     const { control, register, handleSubmit, reset, formState: { errors } } = useForm();
 
-    const { fields: availabilityFields } = useFieldArray({
-        control, // control props comes from useForm (optional: if you are using FormContext)
-        name: "availableIn" // unique name for your Field Array
-
-    });
-    const { fields: featuresField } = useFieldArray({
-        control, // control props comes from useForm (optional: if you are using FormContext)
-        name: "features" // unique name for your Field Array
-    });
-
-
-
     const onSubmit = data => {
+        console.log(data);
         //Checking if user kept inputs empty using regEx and updating data object
         const availableIn = (data.availableIn).filter(availability => /^\s*$/.test(availability) === false);
         const features = (data.features).filter(feature => /^\s*$/.test(feature) === false);

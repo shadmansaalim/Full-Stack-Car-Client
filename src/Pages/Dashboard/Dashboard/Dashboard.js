@@ -21,6 +21,7 @@ import AdminRoute from '../../AdminRoute/AdminRoute';
 import AddCar from '../AddCar/AddCar';
 import ManageAllOrders from '../ManageAllOrders/ManageAllOrders/ManageAllOrders';
 import ManageCars from '../ManageCars/ManageCars';
+import ManageReviews from '../ManageReviews/ManageReviews';
 
 
 const Dashboard = () => {
@@ -58,6 +59,11 @@ const Dashboard = () => {
                                 <Link to={`${url}/manage-orders`}>
                                     <Button className="btn app-main-btn col-10 mb-3" >
                                         <FontAwesomeIcon icon={faBorderAll} /> Manage Orders
+                                    </Button>
+                                </Link>
+                                <Link to={`${url}/manage-reviews`}>
+                                    <Button className="btn app-main-btn col-10 mb-3" >
+                                        <FontAwesomeIcon icon={faPen} /> Manage Reviews
                                     </Button>
                                 </Link>
                                 <Link to={`${url}/manage-cars`}>
@@ -186,6 +192,9 @@ const Dashboard = () => {
                         </AdminRoute>
                         <AdminRoute path={`${path}/manage-orders`}>
                             <ManageAllOrders></ManageAllOrders>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/manage-reviews`}>
+                            <ManageReviews></ManageReviews>
                         </AdminRoute>
                         <AdminRoute path={`${path}/manage-cars`}>
                             <ManageCars></ManageCars>

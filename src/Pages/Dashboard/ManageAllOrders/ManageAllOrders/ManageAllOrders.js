@@ -10,7 +10,6 @@ const ManageAllOrders = () => {
     const { user } = useAuth();
     const history = useHistory();
     const [allOrders, setAllOrders] = useState([]);
-    const [orderCount, setOrderCount] = useState(0);
 
 
     useEffect(() => {
@@ -32,9 +31,8 @@ const ManageAllOrders = () => {
     }, [user.email])
 
 
-    /*
 
-      const handleDeleteOrder = (id, name) => {
+    const handleDeleteOrder = (id, name) => {
         swal({
             title: "Are you sure?",
             text: `Order of ${name} will be cancelled!`,
@@ -44,7 +42,7 @@ const ManageAllOrders = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    const url = `https://eerie-blood-54641.herokuapp.com/orders/${id}`;
+                    const url = `http://localhost:5000/orders/${id}`;
                     fetch(url, {
                         method: 'DELETE'
                     })
@@ -78,7 +76,7 @@ const ManageAllOrders = () => {
         })
             .then((willUpdate) => {
                 if (willUpdate) {
-                    const url = `https://eerie-blood-54641.herokuapp.com/ordersUpdate/${id}`;
+                    const url = `http://localhost:5000/ordersUpdate/${id}`;
                     fetch(url, {
                         method: "PUT",
                         headers: {
@@ -100,7 +98,6 @@ const ManageAllOrders = () => {
             });
     }
 
-    */
 
     return (
         <div class="container">
@@ -127,6 +124,8 @@ const ManageAllOrders = () => {
                                         allOrders.map((order, index) => <Order
                                             index={index}
                                             order={order}
+                                            updateOrderStatus={updateOrderStatus}
+                                            handleDeleteOrder={handleDeleteOrder}
                                         ></Order>)
                                     }
                                 </tbody>

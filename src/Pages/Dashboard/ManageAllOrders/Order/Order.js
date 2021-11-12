@@ -3,51 +3,13 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import swal from 'sweetalert';
 
-const Order = ({ order, index }) => {
+const Order = ({ index, order, updateOrderStatus, handleDeleteOrder }) => {
     const { _id, firstName, lastName, email, phone, streetAddress, streetAddressLine2, city, region, zipcode, country, status, modelID, date, quantity } = order;
-    const [orderStatus, setOrderStatus] = useState(status);
     const statusTypes = ["Pending", "Processing", "Shipped", "Delivered"];
-    const remainingStatus = statusTypes.filter(status => status !== orderStatus);
+    const remainingStatus = statusTypes.filter(s => s !== status);
 
-    const [url, setUrl] = useState("");
-    const handleOrderStatusChange = (e, id) => {
-        const updatedStatus = e.target.value;
-        console.log(updatedStatus);
-        swal({
-            title: "Are you sure?",
-            text: `Order Status will be updated to ${updatedStatus}`,
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-            .then((willUpdate) => {
-                if (willUpdate) {
-                    setUrl(`http://localhost:5000/ordersUpdate/${id}`)
-                    setOrderStatus(updatedStatus);
-                }
-            });
-    }
 
-    useEffect(() => {
-        fetch(url, {
-            method: "PUT",
-            headers: {
-                "content-type": "application/json"
 
-            },
-            body: JSON.stringify([orderStatus])
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount > 0) {
-                    swal("Order Updated Successfully", {
-                        icon: "success",
-                    });
-                }
-
-            })
-
-    }, [orderStatus, url])
 
 
     return (
@@ -73,12 +35,12 @@ const Order = ({ order, index }) => {
             </td>
             <td>
                 <select class={
-                    orderStatus === "Pending"
+                    status === "Pending"
                         ?
                         "form-select mb-3 btn-outline-dark rounded-pill"
                         :
                         (
-                            orderStatus === "Processing"
+                            status === "Processing"
                                 ?
                                 "form-select mb-3 text-white btn-warning rounded-pill"
                                 :
@@ -87,16 +49,18 @@ const Order = ({ order, index }) => {
 
                 }
                     aria-label=".example" onChange={(e) => {
-                        handleOrderStatusChange(e, _id);
+                        updateOrderStatus(e, _id);
                     }}>
-                    <option selected>{orderStatus}</option>
+                    <option selected>{status}</option>
                     {
                         remainingStatus.map(status => <option value={status}>{status}</option>)
                     }
                 </select>
             </td>
             <td>
-                <button type="button" class="btn btn-outline-light btn-circle btn-lg btn-circle me-lg-2"><i class="fa fa-trash"></i> </button>
+                <button onClick={() => {
+                    handleDeleteOrder(_id)
+                }} type="button" class="btn btn-outline-light btn-circle btn-lg btn-circle me-lg-2"><i class="fa fa-trash"></i> </button>
                 <button type="button" class="btn btn-outline-light btn-circle btn-lg btn-circle mt-2 mt-lg-0"><i class="fa fa-edit"></i> </button>
 
             </td>

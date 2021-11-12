@@ -53,8 +53,8 @@ const Reviews = () => {
             .then(data => setReviews(data));
     }, [])
     return (
-        <div className="my-5">
-            <h1 className="fw-light mb-5">Testimonials</h1>
+        <div style={{ marginTop: '120px', marginBottom: '80px' }}>
+            <h1 className="fw-bold mb-5" style={{ fontSize: '48px' }}>Testimonials</h1>
 
             <Slider {...settings}>
 

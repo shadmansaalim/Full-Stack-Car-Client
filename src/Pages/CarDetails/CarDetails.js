@@ -70,14 +70,23 @@ const CarDetails = () => {
             }}>
             </div>
             <Container>
-                <div className="my-5 shadow-lg p-5 bg-white  mx-auto rounded-3">
+                <div className="mb-5 shadow-lg p-5 bg-white  mx-auto rounded-3" style={{ marginTop: '-130px' }}>
                     <div className="d-flex justify-content-between align-items-center pb-3" style={{
                         borderBottom: '1px solid gray'
                     }}>
                         <h4>Drive away from ${car?.price}</h4>
-                        <Button variant="dark" onClick={handleShow}>
-                            Book Now
-                        </Button>
+                        {
+                            car.available === "Available"
+                                ?
+                                <Button variant="dark" onClick={handleShow}>
+                                    Book Now
+                                </Button>
+                                :
+                                <Button disabled variant="secondary" onClick={handleShow}>
+                                    Out of Stock
+                                </Button>
+
+                        }
 
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>

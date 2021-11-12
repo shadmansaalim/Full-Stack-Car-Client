@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
 
 html,body{
@@ -9,7 +9,7 @@ html,body{
 }
 
 body{
-  font-family: 'Montserrat', sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 .App {
@@ -55,4 +55,8 @@ body{
 .app-main-btn{
   background-color: #007cc2!important;
   border-color: #007cc2!important;
+}
+
+.app-main-btn:hover{
+  background-color: #0a5b8a!important;
 }

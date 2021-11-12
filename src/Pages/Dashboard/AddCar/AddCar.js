@@ -127,6 +127,19 @@ const AddCar = () => {
                             </div>
 
                         </div>
+                        <div className="row mt-3 mx-4">
+                            <div className="col-12 mb-2">
+                                <label className="order-form-label">More Information</label>
+                            </div>
+                            <div className="col-12 col-sm-6">
+                                <input
+                                    className="order-form-input" placeholder="Condition" required {...register("condition")} />
+                            </div>
+                            <div className="col-12 col-sm-6 mt-2 mt-sm-0">
+                                <input type="text"
+                                    className="order-form-input" placeholder="Car Available?" required {...register("available")} />
+                            </div>
+                        </div>
 
                         <div className="row mt-3 mx-4">
                             <div className="col-12">

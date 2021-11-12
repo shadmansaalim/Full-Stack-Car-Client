@@ -16,8 +16,8 @@ const FeaturedCars = () => {
 
     }, [])
     return (
-        <div className="my-5">
-            <h2 className="text-start mb-4">Featured Cars</h2>
+        <div style={{ marginTop: '60px', marginBottom: '120px' }}>
+            <h1 className="mb-5 fw-bold" style={{ fontSize: '48px' }}>2021 Featured Cars</h1>
             {
                 <Row xs={1} md={3} className="g-4">
                     {

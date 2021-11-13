@@ -86,3 +86,10 @@
       margin-left: -15rem;
     }
   }
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+  .dashboard-title{
+    font-family: 'Roboto', sans-serif;
+  }

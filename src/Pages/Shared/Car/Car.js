@@ -26,7 +26,7 @@ const Car = ({ car, handleDeleteCar }) => {
                     </Card.Text>
 
                 </Card.Body>
-                <Card.Footer>
+                <Card.Footer className="text-dark">
                     {
                         (admin && location?.pathname === "/dashboard/manage-cars")
                             ?

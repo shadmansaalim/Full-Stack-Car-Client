@@ -21,7 +21,7 @@ const Order = ({ index, order, handleDeleteOrder }) => {
         })
             .then((willUpdate) => {
                 if (willUpdate) {
-                    const url = `http://localhost:5000/ordersUpdate/${id}`;
+                    const url = `https://pure-sands-37131.herokuapp.com/ordersUpdate/${id}`;
                     fetch(url, {
                         method: "PUT",
                         headers: {

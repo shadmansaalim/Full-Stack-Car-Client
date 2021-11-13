@@ -51,52 +51,22 @@ const ManageAllOrders = () => {
                             if (data.deletedCount > 0) {
                                 const remainingOrders = allOrders.filter(order => order._id !== id);
                                 setAllOrders(remainingOrders);
-
-
-                            }
-                        })
-                    swal("Order Cancelled Successfully", {
-                        icon: "success",
-                    });
-
-                }
-            });
-
-    }
-
-    const updateOrderStatus = (e, id) => {
-        const updatedStatus = e.target.value;
-        console.log(updatedStatus);
-        swal({
-            title: "Are you sure?",
-            text: `Order Status will be updated to ${updatedStatus}`,
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-            .then((willUpdate) => {
-                if (willUpdate) {
-                    const url = `http://localhost:5000/ordersUpdate/${id}`;
-                    fetch(url, {
-                        method: "PUT",
-                        headers: {
-                            "content-type": "application/json"
-
-                        },
-                        body: JSON.stringify([updatedStatus])
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.modifiedCount > 0) {
-                                swal("Order Updated Successfully", {
+                                swal("Order Cancelled Successfully", {
                                     icon: "success",
                                 });
                             }
                         })
 
+
                 }
             });
+
     }
+
+
+
+
+
 
 
     return (
@@ -125,12 +95,14 @@ const ManageAllOrders = () => {
 
 
                                                 {
-                                                    allOrders.map((order, index) => <Order
-                                                        index={index}
-                                                        order={order}
-                                                        updateOrderStatus={updateOrderStatus}
-                                                        handleDeleteOrder={handleDeleteOrder}
-                                                    ></Order>)
+                                                    allOrders.map((order, index) =>
+                                                        <Order
+                                                            key={order._id}
+                                                            index={index}
+                                                            order={order}
+                                                            handleDeleteOrder={handleDeleteOrder}
+                                                        ></Order>
+                                                    )
                                                 }
                                             </tbody>
                                         </table>
@@ -146,7 +118,7 @@ const ManageAllOrders = () => {
                         <div class="bounce3"></div>
                     </div>
             }
-        </div>
+        </div >
     );
 };
 

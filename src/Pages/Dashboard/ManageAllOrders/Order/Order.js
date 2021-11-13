@@ -3,12 +3,46 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import swal from 'sweetalert';
 
-const Order = ({ index, order, updateOrderStatus, handleDeleteOrder }) => {
+const Order = ({ index, order, handleDeleteOrder }) => {
     const { _id, firstName, lastName, email, phone, streetAddress, streetAddressLine2, city, region, zipcode, country, status, modelID, date, quantity } = order;
     const statusTypes = ["Pending", "Processing", "Shipped", "Delivered"];
+    const [orderStatus, setOrderStatus] = useState(status);
     const remainingStatus = statusTypes.filter(s => s !== status);
 
 
+    const updateOrderStatus = (e, id) => {
+        const updatedStatus = e.target.value;
+        swal({
+            title: "Are you sure?",
+            text: `Order Status will be updated to ${updatedStatus}`,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willUpdate) => {
+                if (willUpdate) {
+                    const url = `http://localhost:5000/ordersUpdate/${id}`;
+                    fetch(url, {
+                        method: "PUT",
+                        headers: {
+                            "content-type": "application/json"
+
+                        },
+                        body: JSON.stringify([updatedStatus])
+                    })
+                        .then(res => res.json())
+                        .then(async (data) => {
+                            if (data.modifiedCount > 0) {
+                                await setOrderStatus(updatedStatus);
+                                swal("Order Updated Successfully", {
+                                    icon: "success",
+                                });
+                            }
+                        })
+
+                }
+            });
+    }
 
 
 
@@ -35,12 +69,12 @@ const Order = ({ index, order, updateOrderStatus, handleDeleteOrder }) => {
             </td>
             <td>
                 <select class={
-                    status === "Pending"
+                    orderStatus === "Pending"
                         ?
                         "form-select mb-3 btn-outline-dark rounded-pill"
                         :
                         (
-                            status === "Processing"
+                            orderStatus === "Processing"
                                 ?
                                 "form-select mb-3 text-white btn-warning rounded-pill"
                                 :

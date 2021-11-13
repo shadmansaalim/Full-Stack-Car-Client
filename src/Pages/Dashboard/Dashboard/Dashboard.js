@@ -65,17 +65,16 @@ const Dashboard = () => {
                     <div className={toggled ? "d-flex toggled" : "d-flex"} id="wrapper">
 
                         <div className="bg-dark" id="sidebar-wrapper">
-                            <div className="sidebar-heading text-center pt-4 primary-text border-bottom">
+                            <div className="text-center pt-4 pb-2 border-bottom">
                                 {
                                     user.photoURL ?
                                         <img className=" img-fluid rounded-circle settings-user-img" src={user.photoURL} alt=""></img>
                                         :
                                         <FontAwesomeIcon className="fs-1 text-secondary settings-user-img" icon={faUserCircle} />
                                 }
-                                <p className="my-2">{user.email}</p>
                             </div>
-                            <div className="list-group list-group-flush my-3 ">
-                                <Link to="/home"><Button className="btn app-main-btn col-10 mb-3 " >
+                            <div className="list-group list-group-flush my-3 mx-auto">
+                                <Link to="/home"><Button className="btn app-main-btn col-10 mb-3" >
                                     <FontAwesomeIcon icon={faHome} /> Home</Button></Link>
                                 <Link to={`${url}`}><Button className="btn app-main-btn col-10 mb-3 " >
                                     <FontAwesomeIcon icon={faTachometerAlt} /> Dashboard</Button></Link>

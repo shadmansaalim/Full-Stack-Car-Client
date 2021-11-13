@@ -7,6 +7,7 @@ import Footer from '../../Shared/Footer/Footer';
 import Reviews from '../Reviews/Reviews/Reviews';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import CarBuyingExperience from '../CarBuyingExperience/CarBuyingExperience';
 
 const Home = () => {
     const [featuredCars, setFeaturedCars] = useState([]);
@@ -37,6 +38,7 @@ const Home = () => {
                         <Navigation></Navigation>
                         <HomeBanner></HomeBanner>
                         <Container>
+                            <CarBuyingExperience></CarBuyingExperience>
                             <FeaturedCars
                                 featuredCars={featuredCars}
                             ></FeaturedCars>

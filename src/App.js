@@ -13,36 +13,39 @@ import CarDetails from './Pages/CarDetails/CarDetails';
 import Cars from './Pages/Cars/Cars';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
-
+import ScrollToTop from './ScrollToTop/ScrollToTop';
 
 function App() {
   return (
     <div className="App">
       <ContextProvider>
         <Router>
-          <Switch>
-            <Route exact path="/">
-              <Home></Home>
-            </Route>
-            <Route exact path="/home">
-              <Home></Home>
-            </Route>
-            <Route exact path="/cars">
-              <Cars></Cars>
-            </Route>
-            <Route exact path="/sign-in">
-              <SignIn></SignIn>
-            </Route>
-            <Route exact path="/join">
-              <Join></Join>
-            </Route>
-            <PrivateRoute exact path="/car/:id">
-              <CarDetails></CarDetails>
-            </PrivateRoute>
-            <PrivateRoute path="/dashboard">
-              <Dashboard></Dashboard>
-            </PrivateRoute>
-          </Switch>
+          <ScrollToTop>
+            <Switch>
+              <Route exact path="/">
+                <Home></Home>
+              </Route>
+              <Route exact path="/home">
+                <Home></Home>
+              </Route>
+              <Route exact path="/cars">
+                <Cars></Cars>
+              </Route>
+              <Route exact path="/sign-in">
+                <SignIn></SignIn>
+              </Route>
+              <Route exact path="/join">
+                <Join></Join>
+              </Route>
+              <PrivateRoute exact path="/car/:id">
+                <CarDetails></CarDetails>
+              </PrivateRoute>
+              <PrivateRoute path="/dashboard">
+                <Dashboard></Dashboard>
+              </PrivateRoute>
+            </Switch>
+          </ScrollToTop>
+
         </Router>
       </ContextProvider>
     </div>

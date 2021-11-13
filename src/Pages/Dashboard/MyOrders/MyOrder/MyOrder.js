@@ -25,12 +25,16 @@ const MyOrder = ({ order, handleDeleteOrder }) => {
                     <div class="card-text text-start mt-3">
                         <span className="d-flex align-items-center justify-content-between">
                             <h5 className="m-0">Order Details</h5>
-                            <div>
-                                <FontAwesomeIcon className="fs-4 me-2 text-dark" icon={faEdit} />
-                                <FontAwesomeIcon onClick={() => {
-                                    handleDeleteOrder(order._id)
-                                }} className="fs-4 text-danger" icon={faTrash} />
-                            </div>
+                            {
+                                (order.status === "Pending" || order.status === "Processing")
+                                &&
+                                <div>
+                                    <FontAwesomeIcon className="fs-4 me-2 text-dark" icon={faEdit} />
+                                    <FontAwesomeIcon onClick={() => {
+                                        handleDeleteOrder(order._id)
+                                    }} className="fs-4 text-danger" icon={faTrash} />
+                                </div>
+                            }
                         </span>
                         <hr />
                         <div className="mt-3">
@@ -40,12 +44,23 @@ const MyOrder = ({ order, handleDeleteOrder }) => {
                             <p className="mb-2">Address : {order.streetAddress}, {order.streetAddressLine2}, {order.zipCode}, {order.region}, {order.city}, {order.country}</p>
                             <p className="mb-2">Quantity : {order.quantity}</p>
                             <p className="mb-2">Ordered Date : {order.date}</p>
-                            {/* <p className="mb-2">Estimated Delivery : {order.date}</p> */}
                         </div>
                     </div>
                 </div>
                 <div className="card-footer d-flex align-items-center">
-                    <button className="btn btn app-main-btn text-white" disabled>{order.status}</button>
+                    <button className={
+                        order.status === "Pending"
+                            ?
+                            "btn btn app-main-btn text-white"
+                            :
+                            (
+                                order.status === "Processing"
+                                    ?
+                                    "btn btn btn-warning text-white"
+                                    :
+                                    "btn btn btn-success text-white"
+                            )
+                    } disabled>{order.status}</button>
 
                 </div>
             </div>

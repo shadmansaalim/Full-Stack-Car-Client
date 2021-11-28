@@ -60,7 +60,7 @@ const CarDetails = () => {
     return (
         <div>
             {
-                car
+                car?.img && car?.banner
                     ?
                     <>
                         <Navigation></Navigation>
@@ -224,7 +224,7 @@ const CarDetails = () => {
                                         </div>
                                     </div>
                                     <div className="col-lg-7">
-                                        <img className="img-fluid mb-5" src={car?.img.startsWith('/') ? `data:image/*;base64,${car?.img}` : car?.img} alt="" />
+                                        <img className="img-fluid mb-5" src={car?.img?.startsWith('/') ? `data:image/*;base64,${car?.img}` : car?.img} alt="" />
                                     </div>
                                 </div>
                             </div>

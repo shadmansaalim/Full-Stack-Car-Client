@@ -155,11 +155,11 @@ const AddCar = () => {
                             </div>
                             <div className="col-12 col-sm-6">
                                 <input
-                                    className="order-form-input" placeholder="Condition" required {...register("condition")} />
+                                    className="order-form-input" placeholder="Condition - (New / Used)" required {...register("condition")} />
                             </div>
                             <div className="col-12 col-sm-6 mt-2 mt-sm-0">
                                 <input type="text"
-                                    className="order-form-input" placeholder="Car Available?" required {...register("available")} />
+                                    className="order-form-input" placeholder="Car Available? - (Available / Out of Stock)" required {...register("available")} />
                             </div>
                         </div>
 

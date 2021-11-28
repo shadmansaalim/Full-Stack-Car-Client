@@ -61,7 +61,7 @@ const CarDetails = () => {
         <div>
             <Navigation></Navigation>
             <div style={{
-                backgroundImage: `url(${car.banner})`,
+                backgroundImage: `url(${car?.banner?.startsWith('/') ? `data:image/*;base64,${car.banner}` : car.banner})`,
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
                 height: '80vh',
@@ -220,7 +220,7 @@ const CarDetails = () => {
                             </div>
                         </div>
                         <div className="col-lg-7">
-                            <img className="img-fluid mb-5" src={car?.img} alt="" />
+                            <img className="img-fluid mb-5" src={car?.img.startsWith('/') ? `data:image/*;base64,${car?.img}` : car?.img} alt="" />
                         </div>
                     </div>
                 </div>

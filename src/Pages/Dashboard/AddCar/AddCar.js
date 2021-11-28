@@ -1,9 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
-
+import { Form } from 'react-bootstrap';
+import { useState } from 'react';
 const AddCar = () => {
     const { control, register, handleSubmit, reset, formState: { errors } } = useForm();
+    const [thumbnail, setThumbnail] = useState(null);
+    const [cover, setCover] = useState(null);
 
     const onSubmit = data => {
         console.log(data);
@@ -12,12 +15,28 @@ const AddCar = () => {
         const features = (data.features).filter(feature => /^\s*$/.test(feature) === false);
         data.availableIn = availableIn;
         data.features = features;
+
+        if (!thumbnail && cover) {
+            alert('Please add an image')
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('modelName', data.modelName);
+        formData.append('brand', data.brand);
+        formData.append('price', data.price);
+        formData.append('bodyType', data.bodyType);
+        formData.append('img', thumbnail);
+        formData.append('banner', cover);
+        formData.append('overview', data.overview);
+        formData.append('availableIn', JSON.stringify(data.availableIn));
+        formData.append('features', JSON.stringify(data.features));
+        formData.append('condition', data.condition);
+        formData.append('available', data.available);
+        console.log(formData);
         fetch('http://localhost:5000/add-car', {
             method: 'POST',
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(data)
+            body: formData
         })
             .then(res => res.json())
             .then(result => {
@@ -65,17 +84,18 @@ const AddCar = () => {
                                     className="order-form-input" placeholder="Body Type" required {...register("bodyType")} />
                             </div>
                         </div>
-                        <div className="row mt-3 mx-4">
-                            <div className="col-12 mb-2">
-                                <label className="order-form-label">Images</label>
-                            </div>
+                        <div className="row mt-4 mx-4">
                             <div className="col-12 col-sm-6">
-                                <input
-                                    className="order-form-input" placeholder="Thumbnail" required {...register("img")} />
+                                <Form.Group controlId="formFile" className="mb-3">
+                                    <Form.Label><small>Thumbnail Image</small></Form.Label>
+                                    <Form.Control type="file" onChange={e => setThumbnail(e.target.files[0])} required />
+                                </Form.Group>
                             </div>
                             <div className="col-12 col-sm-6 mt-2 mt-sm-0">
-                                <input type="text"
-                                    className="order-form-input" placeholder="Cover" required {...register("banner")} />
+                                <Form.Group controlId="formFile" className="mb-3">
+                                    <Form.Label><small>Cover Photo</small></Form.Label>
+                                    <Form.Control type="file" onChange={e => setCover(e.target.files[0])} required />
+                                </Form.Group>
                             </div>
                         </div>
 

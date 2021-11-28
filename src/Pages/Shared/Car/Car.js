@@ -11,11 +11,11 @@ const Car = ({ car, handleDeleteCar }) => {
     const { _id, modelName, bodyType, img, price, condition, available } = car;
     const { admin } = useAuth();
     const location = useLocation();
-    console.log(location);
+    console.log((img));
     return (
         <Col>
             <Card className="h-100 car">
-                <Card.Img variant="top" src={img} />
+                <Card.Img variant="top" src={img.startsWith('/') ? `data:image/*;base64,${img}` : img} />
                 <Card.Body className="text-dark">
                     <Card.Title>{modelName} ({bodyType})</Card.Title>
                     <Card.Text>

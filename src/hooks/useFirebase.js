@@ -151,7 +151,7 @@ const useFirebase = () => {
     //Function to add users to database MONGO DB
     const saveUserToDb = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('http://localhost:5000/users', {
+        fetch('https://pure-sands-37131.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'
@@ -169,7 +169,7 @@ const useFirebase = () => {
     //Checking and then setting user admin or not
     useEffect(() => {
         setAdminLoading(true);
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://pure-sands-37131.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 updateAdminState(data.admin)

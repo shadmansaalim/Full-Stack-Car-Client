@@ -35,7 +35,7 @@ const AddCar = () => {
         formData.append('condition', data.condition);
         formData.append('available', data.available);
         console.log(formData);
-        fetch('http://localhost:5000/add-car', {
+        fetch('https://pure-sands-37131.herokuapp.com/add-car', {
             method: 'POST',
             body: formData
         })

@@ -26,7 +26,7 @@ const CarDetails = () => {
     const handleShow = () => setShow(true);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/car/${id}`)
+        fetch(`https://pure-sands-37131.herokuapp.com/car/${id}`)
             .then(res => res.json())
             .then(data => setCar(data))
     }, [])
@@ -36,7 +36,7 @@ const CarDetails = () => {
         data.modelID = id;
         data.date = date.toLocaleDateString()
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://pure-sands-37131.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

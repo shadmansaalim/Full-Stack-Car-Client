@@ -37,7 +37,7 @@ const Dashboard = () => {
     const [dashboardData, setDashboardData] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/dashboard-data?email=${user.email}`, {
+        fetch(`https://pure-sands-37131.herokuapp.com/dashboard-data?email=${user.email}`, {
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('carIdToken')}`
             }

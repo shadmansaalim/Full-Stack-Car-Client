@@ -9,7 +9,7 @@ const ManageReviews = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews`)
+        fetch(`https://pure-sands-37131.herokuapp.com/reviews`)
             .then(res => res.json())
             .then(cars => setReviews(cars))
     }, [])
@@ -24,7 +24,7 @@ const ManageReviews = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    const url = `http://localhost:5000/reviews/${id}`;
+                    const url = `https://pure-sands-37131.herokuapp.com/reviews/${id}`;
                     fetch(url, {
                         method: 'DELETE'
                     })

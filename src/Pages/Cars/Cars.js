@@ -5,15 +5,17 @@ import { Container, Row } from 'react-bootstrap';
 import { useState } from 'react';
 import Car from '../Shared/Car/Car';
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const Cars = () => {
+    const { condition } = useParams();
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/cars`)
+        fetch(`http://localhost:5000/cars?condition=${condition}`)
             .then(res => res.json())
             .then(cars => setCars(cars))
-    }, [])
+    }, [condition])
     return (
         <div>
             {

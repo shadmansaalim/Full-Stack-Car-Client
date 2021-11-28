@@ -40,8 +40,17 @@ const HomeBanner = () => {
                     <h5>30-day returns (up to 1500 mi)</h5>
                 </div>
                 <div>
-                    <Link to="/cars">
-                        <Button className="app-main-btn rounded-pill" size="lg">Show me {cars?.length} cars</Button>
+                    <Link to={condition === "All" ? "/cars/All" : condition === "New" ? "/cars/New" : "/cars/Used"}>
+                        {
+                            cars?.length
+                                ?
+                                <Button className="app-main-btn rounded-pill" size="lg">Show me {cars?.length} cars</Button>
+                                :
+                                <Button className="app-main-btn rounded-pill" size="lg" disabled>
+                                    <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Loading...
+                                </Button>
+
+                        }
                     </Link>
                     <br />
                     <small>Everything you auto know</small>

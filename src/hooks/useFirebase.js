@@ -11,6 +11,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({})
     const [admin, setAdmin] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [adminLoading, setAdminLoading] = useState(false);
     const googleProvider = new GoogleAuthProvider();
     const facebookProvider = new FacebookAuthProvider();
     const twitterProvider = new TwitterAuthProvider();
@@ -160,17 +161,19 @@ const useFirebase = () => {
             .then()
     }
 
-    // const updateAdminState = status => {
-    //     setAdmin(status)
-
-    // }
-
+    const updateAdminState = status => {
+        setAdmin(status)
+        setAdminLoading(false);
+    }
 
     //Checking and then setting user admin or not
     useEffect(() => {
+        setAdminLoading(true);
         fetch(`http://localhost:5000/users/${user.email}`)
             .then(res => res.json())
-            .then(data => setAdmin(data.admin))
+            .then(data => {
+                updateAdminState(data.admin)
+            })
     }, [user.email])
 
 
@@ -179,6 +182,7 @@ const useFirebase = () => {
         user,
         admin,
         isLoading,
+        adminLoading,
         registerUser,
         loginUser,
         signInWithGoogle,

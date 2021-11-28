@@ -45,8 +45,8 @@ const settings = {
 const Reviews = ({ reviews }) => {
 
     return (
-        <div style={{ marginTop: '120px', marginBottom: '80px' }}>
-            <h1 className="fw-bold mb-5" style={{ fontSize: '48px' }}>Testimonials</h1>
+        <div className="p-5 mb-5">
+            <h1 className="fw-bold mb-5" style={{ fontSize: '42px' }}>Customer Feedbacks</h1>
 
             <Slider {...settings}>
 

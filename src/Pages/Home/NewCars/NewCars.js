@@ -1,8 +1,8 @@
 import React from 'react';
 
-const CarBuyingExperience = () => {
+const NewCars = () => {
     return (
-        <div style={{ marginTop: '60px', marginBottom: '60px' }}>
+        <div className="p-5" style={{ background: '#f8f8f8' }}>
             <h2>Control Your Car-Buying Experience</h2>
             <p>At CarSales, you're in charge of the process from start to finish. Here's how.</p>
             <div className="row d-flex align-items-center">
@@ -19,4 +19,4 @@ const CarBuyingExperience = () => {
     );
 };
 
-export default CarBuyingExperience;
+export default NewCars;

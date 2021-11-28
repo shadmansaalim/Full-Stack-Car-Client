@@ -12,7 +12,7 @@ const AddCar = () => {
         const features = (data.features).filter(feature => /^\s*$/.test(feature) === false);
         data.availableIn = availableIn;
         data.features = features;
-        fetch('https://pure-sands-37131.herokuapp.com/add-car', {
+        fetch('http://localhost:5000/add-car', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"

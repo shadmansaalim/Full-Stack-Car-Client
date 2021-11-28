@@ -15,8 +15,9 @@ const Home = () => {
     const size = 6;
     const [reviews, setReviews] = useState([]);
 
+
     useEffect(() => {
-        fetch(`https://pure-sands-37131.herokuapp.com/cars?size=${size}`)
+        fetch(`http://localhost:5000/cars?size=${size}`)
             .then(res => res.json())
             .then(cars => setFeaturedCars(cars))
 
@@ -25,7 +26,7 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch('https://pure-sands-37131.herokuapp.com/reviews')
+        fetch('http://localhost:5000/reviews')
             .then(res => res.json())
             .then(data => setReviews(data));
     }, [])

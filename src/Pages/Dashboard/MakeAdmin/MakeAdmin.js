@@ -11,7 +11,7 @@ const MakeAdmin = () => {
 
     const handleAdminSubmit = e => {
         const user = { email };
-        fetch('https://pure-sands-37131.herokuapp.com/users/admin', {
+        fetch('http://localhost:5000/users/admin', {
             method: 'PUT',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('carIdToken')}`,

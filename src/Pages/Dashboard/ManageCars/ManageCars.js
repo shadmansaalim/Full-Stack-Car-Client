@@ -9,7 +9,7 @@ const ManageCars = () => {
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
-        fetch(`https://pure-sands-37131.herokuapp.com/cars`)
+        fetch(`http://localhost:5000/cars`)
             .then(res => res.json())
             .then(cars => setCars(cars))
     }, [])
@@ -24,7 +24,7 @@ const ManageCars = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    const url = `https://pure-sands-37131.herokuapp.com/cars/${id}`;
+                    const url = `http://localhost:5000/cars/${id}`;
                     fetch(url, {
                         method: 'DELETE'
                     })

@@ -4,12 +4,13 @@ import swal from 'sweetalert';
 import { Form } from 'react-bootstrap';
 import { useState } from 'react';
 const AddCar = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const { control, register, handleSubmit, reset, formState: { errors } } = useForm();
     const [thumbnail, setThumbnail] = useState(null);
     const [cover, setCover] = useState(null);
 
     const onSubmit = data => {
-        console.log(data);
+        setIsLoading(true);
         //Checking if user kept inputs empty using regEx and updating data object
         const availableIn = (data.availableIn).filter(availability => /^\s*$/.test(availability) === false);
         const features = (data.features).filter(feature => /^\s*$/.test(feature) === false);
@@ -41,7 +42,8 @@ const AddCar = () => {
             .then(res => res.json())
             .then(result => {
                 if (result.insertedId) {
-                    swal("New Car Added!", "You can now find these car on cars page", "success");
+                    setIsLoading(false);
+                    swal("New Car Added!", "You can now find this car on cars page", "success");
                     reset();
                 }
             })
@@ -172,7 +174,19 @@ const AddCar = () => {
 
                         <div className="row mt-3">
                             <div className="col-11 mx-auto">
-                                <button type="submit" id="btnSubmit" className="btn text-white app-main-btn w-100">Submit</button>
+
+                                {
+                                    isLoading
+                                        ?
+                                        <button type="submit" id="btnSubmit" className="btn text-white app-main-btn w-100" disabled>
+                                            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Uploading
+                                        </button>
+                                        :
+                                        <button type="submit" id="btnSubmit" className="btn text-white app-main-btn w-100">
+                                            Submit
+                                        </button>
+                                }
+
                             </div>
                         </div>
 

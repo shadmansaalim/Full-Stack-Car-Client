@@ -52,7 +52,7 @@ const ManageCars = () => {
 
                     <Container className="mt-4">
                         <section className="my-5">
-                            <Row xs={1} md={3} className="g-4">
+                            <Row xs={1} lg={2} xl={3} className="g-4">
                                 {
                                     cars.map(car => <Car
                                         key={car._id}

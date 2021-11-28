@@ -8,11 +8,13 @@ import useAuth from '../../../../hooks/useAuth';
 
 
 const MyOrders = () => {
+    const [dataLoading, setDataLoading] = useState(false);
     const { user } = useAuth();
     const [myOrders, setMyOrders] = useState([]);
     const history = useHistory();
 
     useEffect(() => {
+        setDataLoading(true);
         fetch(`http://localhost:5000/my-orders?email=${user.email}`, {
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('carIdToken')}`
@@ -29,9 +31,10 @@ const MyOrders = () => {
             })
             .then(result => {
                 setMyOrders(result);
+                setDataLoading(false);
             })
 
-    }, [user.email])
+    }, [user.email, history])
 
     const handleDeleteOrder = id => {
         swal({
@@ -81,11 +84,15 @@ const MyOrders = () => {
                     </div>
 
                     :
-                    <div class="spinner d-flex align-items-center justify-content-center">
-                        <div class="bounce1"></div>
-                        <div class="bounce2"></div>
-                        <div class="bounce3"></div>
-                    </div>
+                    dataLoading
+                        ?
+                        <div class="spinner d-flex align-items-center justify-content-center">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                        :
+                        <h1>No orders</h1>
             }
         </div>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const NewCars = () => {
     return (
         <div className="p-5" style={{ background: '#f8f8f8' }}>
@@ -12,7 +12,9 @@ const NewCars = () => {
                 <div className="col-lg-5 mx-auto text-start">
                     <h3>Build Your Deal With Confidence</h3>
                     <p>Get a personalized offer from a dealer online, including manufacturer incentives and discounts. Next, build a custom deal that includes the value of your trade-in and monthly payments.</p>
-                    <button className="mt-3 btn app-main-btn text-white rounded-pill">Shop New cars</button>
+                    <Link to="/cars/New">
+                        <button className="mt-3 btn app-main-btn text-white rounded-pill">Shop New cars</button>
+                    </Link>
                 </div>
             </div>
         </div>

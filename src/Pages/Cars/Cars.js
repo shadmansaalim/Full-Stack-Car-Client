@@ -25,7 +25,7 @@ const Cars = () => {
                         <Navigation></Navigation>
                         <Container>
                             <section className="my-5">
-                                <Row xs={1} md={3} lg={4} className="g-4">
+                                <Row xs={1} md={3} lg={3} className="g-4">
                                     {
                                         cars.map(car => <Car
                                             key={car._id}

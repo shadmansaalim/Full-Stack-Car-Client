@@ -30,29 +30,29 @@
   
   }
   
-  #sidebar-wrapper-dashboard {
+  #sidebar-wrapper {
     min-height: 100vh;
-    margin-left: -15rem;
+    margin-left: -25rem;
     -webkit-transition: margin 0.25s ease-out;
     -moz-transition: margin 0.25s ease-out;
     -o-transition: margin 0.25s ease-out;
     transition: margin 0.25s ease-out;
   }
   
-  #sidebar-wrapper-dashboard  .sidebar-heading {
+  #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 1.25rem;
   
   }
   
-  #sidebar-wrapper-dashboard  .list-group {
-    width: 15rem;
+  #sidebar-wrapper .list-group {
+    width: 25rem;
   }
   
   #page-content-wrapper {
     min-width: 100vw;
   }
   
-  #wrapper.toggled #sidebar-wrapper-dashboard  {
+  #wrapper.toggled #sidebar-wrapper {
     margin-left: 0;
   }
   
@@ -71,26 +71,59 @@
     font-weight: bold;
     border: none;
   }
+
+  .box{
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box:hover{
+    background-color: whitesmoke;
+    cursor: pointer;
+  }
+
+  .logo{
+      width: 40px !important;
+      height: 25px !important;
+  }
   
   @media (min-width: 768px) {
-    #sidebar-wrapper-dashboard  {
-      margin-left: 0;
+    #sidebar-wrapper {
+      margin-left: -20rem;
     }
   
     #page-content-wrapper {
       min-width: 0;
       width: 100%;
     }
+    
+    #sidebar-wrapper .list-group {
+        width: 20rem;
+    }
   
-    #wrapper.toggled #sidebar-wrapper-dashboard  {
-      margin-left: -15rem;
+    #wrapper.toggled #sidebar-wrapper {
+      margin-left: 0rem;
     }
   }
+
+  @media only screen and (max-width: 688px){
+      #sidebar-wrapper {
+        margin-left: -15rem;
+      }
+      #sidebar-wrapper .list-group {
+        width: 15rem;
+      }
+      #wrapper.toggled #sidebar-wrapper {
+        margin-left: 0rem;
+      }
+    }
 
 
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-  .dashboard-title{
+  .project-title{
     font-family: 'Roboto', sans-serif;
   }
-

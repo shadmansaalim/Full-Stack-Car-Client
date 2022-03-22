@@ -46,24 +46,34 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     }
 
+
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
+            setIsLoading(true);
             if (user) {
+                setUser(user);
                 getIdToken(user)
                     .then(carIdToken => {
                         localStorage.setItem('carIdToken', carIdToken)
-                        setUser(user);
+
+                    })
+                fetch(`https://pure-sands-37131.herokuapp.com/users/${user.email}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.admin) {
+                            setAdmin(true);
+                        }
                         setIsLoading(false);
                     })
-
-
             } else {
+                setAdmin(false);
                 setUser({})
                 setIsLoading(false);
             }
 
         });
-    }, [auth])
+    }, [auth, user.email])
+
 
 
 
@@ -138,15 +148,19 @@ const useFirebase = () => {
             })
             .finally(() => setIsLoading(false));
     }
+
     const logOut = () => {
+        setIsLoading(true)
         signOut(auth).then(() => {
             // Sign-out successful.
+            setAdmin(false)
             setUser({});
         }).catch((error) => {
             // An error happened.
         })
             .finally(() => setIsLoading(false));
     }
+
 
     //Function to add users to database MONGO DB
     const saveUserToDb = (email, displayName, method) => {
@@ -160,21 +174,6 @@ const useFirebase = () => {
         })
             .then()
     }
-
-    const updateAdminState = status => {
-        setAdmin(status)
-        setAdminLoading(false);
-    }
-
-    //Checking and then setting user admin or not
-    useEffect(() => {
-        setAdminLoading(true);
-        fetch(`https://pure-sands-37131.herokuapp.com/users/${user.email}`)
-            .then(res => res.json())
-            .then(data => {
-                updateAdminState(data.admin)
-            })
-    }, [user.email])
 
 
 

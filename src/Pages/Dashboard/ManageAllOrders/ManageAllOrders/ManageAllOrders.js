@@ -85,8 +85,8 @@ const ManageAllOrders = () => {
                                                 <tr>
                                                     <th scope="col" class="border-0 text-uppercase font-medium pl-4">#</th>
                                                     <th scope="col" class="border-0 text-uppercase font-medium">User Info</th>
-                                                    <th scope="col" class="border-0 text-uppercase font-medium">Order Details</th>
-                                                    <th scope="col" class="border-0 text-uppercase font-medium">Delivery</th>
+                                                    <th scope="col" class="border-0 text-uppercase font-medium d-none d-md-table-cell">Order Details</th>
+                                                    <th scope="col" class="border-0 text-uppercase font-medium d-none d-md-table-cell">Delivery</th>
                                                     <th scope="col" class="border-0 text-uppercase font-medium">Category</th>
                                                     <th scope="col" class="border-0 text-uppercase font-medium">Manage</th>
                                                 </tr>

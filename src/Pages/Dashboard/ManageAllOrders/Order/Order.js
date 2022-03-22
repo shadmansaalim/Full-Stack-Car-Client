@@ -54,12 +54,12 @@ const Order = ({ index, order, handleDeleteOrder }) => {
                 <span class="text-muted">{email}</span><br />
                 <span class="text-muted">Phone : {phone}</span>
             </td>
-            <td>
+            <td className="d-none d-md-table-cell">
                 <span >Model : {modelID}</span><br />
                 <span >Quantity : {quantity}</span><br />
                 <span>Ordered : {date}</span>
             </td>
-            <td>
+            <td className="d-none d-md-table-cell">
                 <span class="text-muted">{streetAddress}</span><br />
                 <span class="text-muted">{streetAddressLine2}</span><br />
                 <span class="text-muted">{city},</span>

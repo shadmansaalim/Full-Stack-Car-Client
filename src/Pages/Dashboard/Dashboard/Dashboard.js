@@ -27,7 +27,7 @@ import swal from 'sweetalert';
 
 
 const Dashboard = () => {
-    const [toggled, setToggled] = useState(false);
+    const [toggled, setToggled] = useState(true);
     let { path, url } = useRouteMatch();
     const history = useHistory();
     const { user, logOut, admin } = useAuth();

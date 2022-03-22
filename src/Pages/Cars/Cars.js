@@ -13,15 +13,16 @@ const Cars = () => {
     const { condition } = useParams();
     const [toggled, setToggled] = useState(false);
     const [cars, setCars] = useState([]);
+    const [carCondition, setCarCondition] = useState(condition);
 
 
     const [userSelected, setUserSelected] = useState([]);
 
     useEffect(() => {
-        fetch(`https://pure-sands-37131.herokuapp.com/cars?condition=${condition}`)
+        fetch(`https://pure-sands-37131.herokuapp.com/cars?condition=${carCondition}`)
             .then(res => res.json())
             .then(cars => setCars(cars))
-    }, [condition])
+    }, [carCondition])
 
 
     //PAGINATION SETUP CODE
@@ -112,10 +113,20 @@ const Cars = () => {
                                 <nav className="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                                     <div className="d-flex align-items-center">
                                         <i onClick={() => setToggled(!toggled)} className="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"
-                                            style={{ color: '#007cc2' }}
+                                            style={{ color: 'black' }}
                                         ></i>
-                                        <h3 className="m-0 text-uppercase project-title"
-                                        >Choose your dream car</h3>
+                                        <div className="col-lg-6 mx-auto btn-group" role="group" aria-label="Basic radio toggle button group">
+                                            <label onClick={() => setCarCondition("All")} class={carCondition === "All" ? "btn app-main-btn active rounded-pill me-2 px-4 py-1" : "btn app-outline-btn rounded-pill me-2 px-4 py-1"} for="all">
+                                                All
+                                                <input type="radio" class="btn-check" name="condition" id="all" autocomplete="off" checked />
+                                            </label>
+                                            <label onClick={() => setCarCondition("New")} class={carCondition === "New" ? "btn app-main-btn active rounded-pill me-2 px-4 py-1" : "btn app-outline-btn rounded-pill me-2 px-4 py-1"} for="new">New
+                                                <input type="radio" class="btn-check" name="condition" id="new" autocomplete="off" />
+                                            </label>
+                                            <label onClick={() => setCarCondition("Used")} class={carCondition === "Used" ? "btn app-main-btn active rounded-pill px-4 py-1" : "btn app-outline-btn rounded-pill px-4 py-1"} for="used">Used
+                                                <input type="radio" class="btn-check" name="condition" id="used" autocomplete="off" />
+                                            </label>
+                                        </div>
                                     </div>
                                 </nav>
                                 <div className="container-fluid px-4">

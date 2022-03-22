@@ -12,7 +12,7 @@ const NewCars = () => {
                 <div className="col-lg-5 mx-auto text-start">
                     <h3>Build Your Deal With Confidence</h3>
                     <p>Get a personalized offer from a dealer online, including manufacturer incentives and discounts. Next, build a custom deal that includes the value of your trade-in and monthly payments.</p>
-                    <Link to="/cars/New">
+                    <Link to="/cars/new-cars">
                         <button className="mt-3 btn app-main-btn text-white rounded-pill">Shop New cars</button>
                     </Link>
                 </div>

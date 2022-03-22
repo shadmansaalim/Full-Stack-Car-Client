@@ -1,4 +1,5 @@
 import React from 'react';
+import swal from 'sweetalert';
 
 const SellCar = () => {
     return (
@@ -10,7 +11,11 @@ const SellCar = () => {
                 <div className="col-lg-5 mx-auto text-start">
                     <h3>Get a Trade-in Offer You Can Use Today</h3>
                     <p>Answer a few questions to see your car’s market value and get a cash offer in minutes. Cash out, or trade in for a new or used car.</p>
-                    <button className="mt-3 btn app-main-btn text-white rounded-pill">Sell Your Car</button>
+                    <button onClick={
+                        () => {
+                            swal("Selling Feature on Progress", "Please wait until the developer adds the selling feature", "warning");
+                        }
+                    } className="mt-3 btn app-main-btn text-white rounded-pill">Sell Your Car</button>
                 </div>
             </div>
         </div>

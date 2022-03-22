@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import useAuth from '../../../hooks/useAuth';
+import swal from 'sweetalert';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
@@ -23,11 +23,14 @@ const MakeAdmin = () => {
             .then(data => {
                 if (data.modifiedCount) {
                     setEmail('');
-
+                    e.target.reset();
+                }
+                else {
+                    swal("User Not Found!", "User doesn't exist with the email id", "error");
                 }
             })
         e.preventDefault();
-        e.target.reset();
+
     }
     return (
         <div className="text-start mt-5 col-lg-6">

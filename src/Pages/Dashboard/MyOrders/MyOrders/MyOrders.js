@@ -92,7 +92,7 @@ const MyOrders = () => {
                             <div class="bounce3"></div>
                         </div>
                         :
-                        <h1>No orders</h1>
+                        <h3 className="mt-3">You have zero pending orders</h3>
             }
         </div>
     );

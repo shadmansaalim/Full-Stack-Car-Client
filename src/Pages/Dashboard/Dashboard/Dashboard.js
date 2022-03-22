@@ -113,10 +113,6 @@ const Dashboard = () => {
                                         </>
                                         :
                                         <>
-                                            <Link to={`${url}/pay`}>
-                                                <Button className="btn app-main-btn col-10 mb-3" >
-                                                    <FontAwesomeIcon icon={faMoneyCheckAlt} /> Pay</Button>
-                                            </Link>
                                             <Link to={`${url}/my-orders`}>
                                                 <Button className="btn app-main-btn col-10 mb-3" ><FontAwesomeIcon icon={faBorderAll} /> My Orders</Button>
                                             </Link>
@@ -157,11 +153,8 @@ const Dashboard = () => {
                                                     dashboardData={dashboardData}
                                                 ></DashboardHome>
                                                 :
-                                                <h3 className="text-start mt-4">Hello {user.displayName}</h3>
+                                                <h3 className="text-start mt-4">Hello, {user.displayName}</h3>
                                         }
-                                    </Route>
-                                    <Route path={`${path}/pay`}>
-                                        <Pay></Pay>
                                     </Route>
                                     <Route path={`${path}/my-orders`}>
                                         <MyOrders></MyOrders>

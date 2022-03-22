@@ -52,51 +52,26 @@ const Cars = () => {
     });
 
 
-    //PAGINATION SETUP CODE
+    // //PAGINATION SETUP CODE
 
-    const [currentCars, setCurrentCars] = useState(userSelected);
-    const [pageCount, setPageCount] = useState(0);
-
-
-    const [itemOffset, setItemOffset] = useState(0);
-    const carsPerPage = 12;
-
-    useEffect(() => {
-        const endOffset = itemOffset + carsPerPage;
-        setCurrentCars(userSelected.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(userSelected.length / carsPerPage));
-    }, [itemOffset, userSelected]);
-
-    // Invoke when user click to request another page.
-    const handlePageClick = (event) => {
-        const newOffset = (event.selected * carsPerPage) % userSelected.length;
-        setItemOffset(newOffset);
-    };
+    // const [currentCars, setCurrentCars] = useState(userSelected);
+    // const [pageCount, setPageCount] = useState(0);
 
 
+    // const [itemOffset, setItemOffset] = useState(0);
+    // const carsPerPage = 12;
 
+    // useEffect(() => {
+    //     const endOffset = itemOffset + carsPerPage;
+    //     setCurrentCars(userSelected.slice(itemOffset, endOffset));
+    //     setPageCount(Math.ceil(userSelected.length / carsPerPage));
+    // }, [itemOffset, userSelected]);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // // Invoke when user click to request another page.
+    // const handlePageClick = (event) => {
+    //     const newOffset = (event.selected * carsPerPage) % userSelected.length;
+    //     setItemOffset(newOffset);
+    // };
 
 
 
@@ -417,7 +392,7 @@ const Cars = () => {
                                 </div>
                                 <div className="d-flex justify-content-center mx-auto">
                                     {/* Calling the car pagination component for pagination */}
-                                    <ReactPaginate
+                                    {/* <ReactPaginate
                                         nextLabel=">"
                                         onPageChange={handlePageClick}
                                         pageRangeDisplayed={3}
@@ -436,7 +411,7 @@ const Cars = () => {
                                         containerClassName="pagination"
                                         activeClassName="active"
                                         renderOnZeroPageCount={null}
-                                    />
+                                    /> */}
                                 </div>
                                 <div className="container-fluid px-4 mt-5">
                                     {
@@ -448,7 +423,7 @@ const Cars = () => {
                                                         ?
                                                         <Row xs={1} md={1} xl={2} className="g-4">
                                                             {
-                                                                currentCars.map(car => <Car
+                                                                userSelected.map(car => <Car
                                                                     key={car._id}
                                                                     car={car}
                                                                 ></Car>)
@@ -457,7 +432,7 @@ const Cars = () => {
                                                         :
                                                         <Row xs={1} md={2} xl={3} className="g-4">
                                                             {
-                                                                currentCars.map(car => <Car
+                                                                userSelected.map(car => <Car
                                                                     key={car._id}
                                                                     car={car}
                                                                 ></Car>)

@@ -22,6 +22,7 @@ const AddCar = () => {
             return;
         }
 
+
         const formData = new FormData();
         formData.append('modelName', data.modelName);
         formData.append('brand', data.brand);
@@ -60,7 +61,7 @@ const AddCar = () => {
 
                         <div className="row mx-4">
                             <div className="col-12 mb-2">
-                                <label className="order-form-label">Model Details</label>
+                                <label className="order-form-label"><u>Model Details</u></label>
                             </div>
                             <div className="col-12 col-sm-6">
                                 <input type="text"
@@ -73,7 +74,7 @@ const AddCar = () => {
                         </div>
                         <div className="row mt-3 mx-4">
                             <div className="col-12 mb-2">
-                                <label className="order-form-label">Price & Type</label>
+                                <label className="order-form-label"><u>Price & Type</u></label>
                             </div>
 
                             <div className="col-12 col-sm-6 mt-2 mt-sm-0">
@@ -89,13 +90,13 @@ const AddCar = () => {
                         <div className="row mt-4 mx-4">
                             <div className="col-12 col-sm-6">
                                 <Form.Group controlId="formFile" className="mb-3">
-                                    <Form.Label><small>Thumbnail Image</small></Form.Label>
+                                    <Form.Label><small><u>Thumbnail Image</u></small></Form.Label>
                                     <Form.Control type="file" onChange={e => setThumbnail(e.target.files[0])} required />
                                 </Form.Group>
                             </div>
                             <div className="col-12 col-sm-6 mt-2 mt-sm-0">
                                 <Form.Group controlId="formFile" className="mb-3">
-                                    <Form.Label><small>Cover Photo</small></Form.Label>
+                                    <Form.Label><small><u>Cover Photo</u></small></Form.Label>
                                     <Form.Control type="file" onChange={e => setCover(e.target.files[0])} required />
                                 </Form.Group>
                             </div>
@@ -104,7 +105,7 @@ const AddCar = () => {
 
                         <div className="row mt-3 mx-4">
                             <div className="col-12">
-                                <label className="order-form-label">Overview</label>
+                                <label className="order-form-label"><u>Overview</u></label>
                             </div>
                             <div className="col-12">
                                 <textarea class="form-control" placeholder="Write Some Details About Car" id="floatingServiceDescription" style={{ height: '100px' }} required {...register("overview")}></textarea>
@@ -114,7 +115,7 @@ const AddCar = () => {
 
                         <div className="row mt-3 mx-4">
                             <div className="col-12">
-                                <label className="order-form-label">Availability & Features</label>
+                                <label className="order-form-label"><u>Availability & Features</u></label>
                             </div>
 
                             <div className="col-12 col-sm-6 mt-2 pr-sm-2">
@@ -151,23 +152,44 @@ const AddCar = () => {
                         </div>
                         <div className="row mt-3 mx-4">
                             <div className="col-12 mb-2">
-                                <label className="order-form-label">More Information</label>
+                                <label className="order-form-label"><u>More Information</u></label>
                             </div>
-                            <div className="col-12 col-sm-6">
-                                <input
-                                    className="order-form-input" placeholder="Condition - (New / Used)" required {...register("condition")} />
+                            <div className="col-11 col-sm-5 ms-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                                        value="New" required {...register("condition")} />
+                                    <label class="form-check-label" htmlFor="flexRadioDefault1">
+                                        <i>  New Car</i>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input value="Used" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" required {...register("condition")} />
+                                    <label class="form-check-label" htmlFor="flexRadioDefault2">
+                                        <i>     Used Car</i>
+                                    </label>
+                                </div>
                             </div>
-                            <div className="col-12 col-sm-6 mt-2 mt-sm-0">
-                                <input type="text"
-                                    className="order-form-input" placeholder="Car Available? - (Available / Out of Stock)" required {...register("available")} />
+                            <div className="col-11 col-sm-5 mt-2 mt-sm-0">
+                                <div class="form-check">
+                                    <input value="Available" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" required {...register("available")} />
+                                    <label class="form-check-label" htmlFor="flexRadioDefault3">
+                                        <i>  Available</i>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input value="Out of Stock" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" required {...register("available")} />
+                                    <label class="form-check-label" htmlFor="flexRadioDefault4">
+                                        <i>      Out of Stock</i>
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="row mt-3 mx-4">
+                        <div className="row mt-5 mx-4">
                             <div className="col-12">
                                 <div className="form-check">
                                     <input type="checkbox" className="form-check-input" name="validation" id="validation" value="1" required />
-                                    <label htmlFor="validation" className="form-check-label">I know what I need to know</label>
+                                    <label htmlFor="validation" className="form-check-label">I know that this item will be added to the website and I being an Admin was asked to do it.</label>
                                 </div>
                             </div>
                         </div>

@@ -25,7 +25,57 @@ const CarBrand = ({ index, brand, handleBrandClick }) => {
         carlogo7,
         carlogo8,
         carlogo9,
-        carlogo10
+        carlogo10,
+        carlogo1,
+        carlogo2,
+        carlogo3,
+        carlogo4,
+        carlogo5,
+        carlogo6,
+        carlogo7,
+        carlogo8,
+        carlogo9,
+        carlogo10,
+        carlogo1,
+        carlogo2,
+        carlogo3,
+        carlogo4,
+        carlogo5,
+        carlogo6,
+        carlogo7,
+        carlogo8,
+        carlogo9,
+        carlogo10,
+        carlogo1,
+        carlogo2,
+        carlogo3,
+        carlogo4,
+        carlogo5,
+        carlogo6,
+        carlogo7,
+        carlogo8,
+        carlogo9,
+        carlogo10,
+        carlogo1,
+        carlogo2,
+        carlogo3,
+        carlogo4,
+        carlogo5,
+        carlogo6,
+        carlogo7,
+        carlogo8,
+        carlogo9,
+        carlogo10,
+        carlogo1,
+        carlogo2,
+        carlogo3,
+        carlogo4,
+        carlogo5,
+        carlogo6,
+        carlogo7,
+        carlogo8,
+        carlogo9,
+        carlogo10,
     ]
 
     return (
@@ -36,7 +86,7 @@ const CarBrand = ({ index, brand, handleBrandClick }) => {
                 handleBrandClick(brand, !clicked)
             }}>
             <img className="img-fluid logo" src={
-                dummyLogos[Math.floor(Math.random() * dummyLogos.length)]
+                dummyLogos[index]
             } alt="" />
             <br />
             <small className="text-muted text-center" style={{

@@ -11,6 +11,7 @@ import './Cars.css';
 import CarBrand from './CarBrand';
 import CarModel from './CarModel';
 import CarType from './CarType';
+import notFound from '../../images/not-found.png';
 
 const Cars = () => {
     const { condition } = useParams();
@@ -22,14 +23,19 @@ const Cars = () => {
     const carsModel = [];
     const carsType = [];
 
-
     const [userSelected, setUserSelected] = useState([]);
+
+
+    const [brands, setBrands] = useState([]);
+    const [types, setTypes] = useState([]);
+    const [model, setModel] = useState(null);
 
     useEffect(() => {
         fetch(`https://pure-sands-37131.herokuapp.com/cars?condition=${carCondition}`)
             .then(res => res.json())
             .then(cars => {
                 setCars(cars);
+                setUserSelected(cars);
             })
     }, [carCondition])
 
@@ -48,24 +54,280 @@ const Cars = () => {
 
     //PAGINATION SETUP CODE
 
-    const [currentVehicles, setCurrentVehicles] = useState(userSelected);
+    const [currentCars, setCurrentCars] = useState(userSelected);
     const [pageCount, setPageCount] = useState(0);
 
 
     const [itemOffset, setItemOffset] = useState(0);
-    const vehiclesPerPage = 30;
+    const carsPerPage = 12;
 
     useEffect(() => {
-        const endOffset = itemOffset + vehiclesPerPage;
-        setCurrentVehicles(userSelected.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(userSelected.length / vehiclesPerPage));
+        const endOffset = itemOffset + carsPerPage;
+        setCurrentCars(userSelected.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(userSelected.length / carsPerPage));
     }, [itemOffset, userSelected]);
 
     // Invoke when user click to request another page.
     const handlePageClick = (event) => {
-        const newOffset = (event.selected * vehiclesPerPage) % userSelected.length;
+        const newOffset = (event.selected * carsPerPage) % userSelected.length;
         setItemOffset(newOffset);
     };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Brand boxes functionality
+    const handleBrandClick = (brand, clicked) => {
+        //Finding the cars that user clicked by brand
+        const selectedBrandCars = cars.filter(car => car.brand === brand);
+
+
+        //Checking whether user clicked on any other make brand
+        if (userSelected.length !== cars.length) {
+            //Checking whether user is clicking second time for removing the filter or not
+
+
+            if (clicked) {
+                const newBrands = [...brands, brand];
+                setBrands(newBrands);
+                if (types.length) {
+                    let brandsId = [];
+                    let typesId = []
+                    for (const t of types) {
+                        (cars.filter(car => car.bodyType === t)).forEach(car => {
+                            brandsId.push(car._id);
+                        });
+                    }
+                    for (const b of newBrands) {
+                        (cars.filter(car => car.brand === b)).forEach(car => {
+                            typesId.push(car._id);
+                        });
+                    }
+
+                    const commonId = brandsId.filter(id => typesId.includes(id));
+
+
+                    let newSelected = [];
+
+                    for (const id of commonId) {
+                        newSelected.push(cars.find(car => car._id === id));
+                    }
+
+                    //Match model
+                    if (model !== null) {
+                        newSelected = newSelected.filter(car => car.modelName === model);
+                    }
+
+                    setUserSelected(newSelected);
+                }
+                else {
+                    let newSelected = cars.filter(car => car.brand === brand)
+                    //Match model
+                    if (model !== null) {
+                        newSelected = newSelected.filter(car => car.modelName === model);
+                        setUserSelected(newSelected);
+                    }
+                    else {
+                        setUserSelected([...userSelected, ...newSelected]);
+                    }
+                }
+            }
+            else {
+                setBrands(brands.filter(b => b !== brand));
+                const newSelected = userSelected.filter(car => car.brand !== brand)
+                //Checking whether this is the last selected box or not so that if this is unselected we can display all the cars
+                if (newSelected.length === 0) {
+                    if (types.length) {
+                        let typesCars = [];
+                        for (const t of types) {
+                            (cars.filter(car => car.bodyType === t)).forEach(car => {
+                                typesCars.push(car)
+                            });
+                        }
+
+                        //Match model
+                        if (model !== null) {
+                            setUserSelected(typesCars.filter(car => car.modelName === model));
+                        }
+                        else {
+                            setUserSelected(typesCars);
+                        }
+                    }
+                    //Match model
+                    else if (model !== null && !types.length) {
+                        setUserSelected(cars.filter(car => car.modelName === model));
+                    }
+                    else {
+                        setUserSelected(cars);
+                    }
+                }
+                else {
+                    if (model !== null) {
+                        setUserSelected(userSelected.filter(car => car.modelName === model));
+                    }
+                    else {
+                        setUserSelected(newSelected);
+                    }
+                }
+            }
+        }
+        else {
+            setBrands([brand]);
+            setUserSelected(selectedBrandCars);
+        }
+
+        window.scrollTo(0, 0);
+
+    }
+
+    //Type boxes functionality
+    const handleTypeClick = (type, clicked) => {
+        //Finding the cars that user clicked by type
+        const selectedTypeCars = cars.filter(car => car.bodyType === type);
+
+
+        //Checking whether user clicked on any other type of car
+        if (userSelected.length !== cars.length) {
+            //Checking whether user is clicking second time for removing the filter or not
+
+
+            if (clicked) {
+                const newTypes = [...types, type];
+                setTypes(newTypes);
+                if (brands.length) {
+                    let brandsId = [];
+                    let typesId = []
+                    for (const b of brands) {
+                        (cars.filter(car => car.brand === b)).forEach(car => {
+                            brandsId.push(car._id);
+                        });
+                    }
+                    for (const t of newTypes) {
+                        (cars.filter(car => car.bodyType === t)).forEach(car => {
+                            typesId.push(car._id)
+                        });
+                    }
+
+                    const commonId = brandsId.filter(id => typesId.includes(id));
+
+                    let newSelected = [];
+
+                    for (const id of commonId) {
+                        newSelected.push(cars.find(car => car._id === id));
+                    }
+
+                    //Match model
+                    if (model !== null) {
+                        newSelected = newSelected.filter(car => car.modelName === model);
+                    }
+                    setUserSelected(newSelected);
+                }
+                else {
+                    let newSelected = cars.filter(car => car.bodyType === type)
+                    //Match model
+                    if (model !== null) {
+                        newSelected = newSelected.filter(car => car.modelName === model);
+                        setUserSelected(newSelected);
+                    }
+                    else {
+                        setUserSelected([...userSelected, ...newSelected]);
+                    }
+                }
+            }
+            else {
+                setTypes(types.filter(t => t !== type));
+                const newSelected = userSelected.filter(car => car.bodyType !== type)
+
+                //Checking whether this is the last selected box or not so that if this is unselected we can display all the cars
+                if (newSelected.length === 0) {
+                    if (brands.length) {
+                        let brandCars = [];
+                        for (const b of brands) {
+                            (cars.filter(car => car.brand === b)).forEach(car => {
+                                brandCars.push(car)
+                            });
+                        }
+                        //Match model
+                        if (model !== null) {
+                            setUserSelected(brandCars.filter(car => car.modelName === model));
+                        }
+                        else {
+                            setUserSelected(brandCars);
+                        }
+                    }
+                    //Match model
+                    else if (model !== null && !brands.length) {
+                        setUserSelected(cars.filter(car => car.modelName === model));
+                    }
+                    else {
+                        setUserSelected(cars);
+                    }
+                }
+                else {
+                    setUserSelected(newSelected);
+                }
+            }
+        }
+        else {
+            setTypes([type]);
+            setUserSelected(selectedTypeCars);
+        }
+        window.scrollTo(0, 0);
+    }
+
+
+    //Model Drop Down Functionality
+    const handleModelOnChange = (e) => {
+        const newModel = e.target.value;
+        console.log(newModel, model);
+        if (newModel === model) {
+            alert('fsdgsdf')
+        }
+        else {
+            setModel(e.target.value);
+            if (brands.length || types.length) {
+                const newSelected = userSelected.filter(car => car.modelName === newModel);
+                setUserSelected(newSelected);
+            }
+            else {
+                const newSelected = cars.filter(car => car.modelName === newModel);
+                setUserSelected(newSelected);
+            }
+        }
+
+
+        window.scrollTo(0, 0);
+    }
+
+
+
 
 
     return (
@@ -89,7 +351,7 @@ const Cars = () => {
                                                     key={carsBrand.indexOf(brand)}
                                                     index={carsBrand.indexOf(brand)}
                                                     brand={brand}
-                                                // handleBrandClick={handleBrandClick}
+                                                    handleBrandClick={handleBrandClick}
                                                 ></CarBrand>)
                                             }
                                         </div>
@@ -99,7 +361,9 @@ const Cars = () => {
                                             <h6 className="ms-2">Models</h6>
                                         </div>
                                         <div className="form-floating col-11 mx-auto">
-                                            <select className="form-select p-0 ps-2" id="floatingSelect" aria-label="Floating label select example">
+                                            <select onChange={
+                                                handleModelOnChange
+                                            } className="form-select p-0 ps-2" id="floatingSelect" aria-label="Floating label select example">
                                                 <option disabled defaultValue selected>Models</option>
                                                 {
                                                     carsModel.map(model => <CarModel
@@ -120,7 +384,7 @@ const Cars = () => {
                                                     key={carsType.indexOf(type)}
                                                     index={carsType.indexOf(type)}
                                                     type={type}
-                                                // handleTypeClick={handleTypeClick}
+                                                    handleTypeClick={handleTypeClick}
                                                 ></CarType>)
                                             }
                                         </div>
@@ -152,7 +416,7 @@ const Cars = () => {
 
                                 </div>
                                 <div className="d-flex justify-content-center mx-auto">
-                                    {/* Calling the course pagination component for pagination */}
+                                    {/* Calling the car pagination component for pagination */}
                                     <ReactPaginate
                                         nextLabel=">"
                                         onPageChange={handlePageClick}
@@ -176,7 +440,7 @@ const Cars = () => {
                                 </div>
                                 <div className="container-fluid px-4 mt-5">
                                     {
-                                        cars.length
+                                        userSelected.length
                                             ?
                                             <section className="my-5">
                                                 {
@@ -184,7 +448,7 @@ const Cars = () => {
                                                         ?
                                                         <Row xs={1} md={1} xl={2} className="g-4">
                                                             {
-                                                                cars.map(car => <Car
+                                                                currentCars.map(car => <Car
                                                                     key={car._id}
                                                                     car={car}
                                                                 ></Car>)
@@ -193,7 +457,7 @@ const Cars = () => {
                                                         :
                                                         <Row xs={1} md={2} xl={3} className="g-4">
                                                             {
-                                                                cars.map(car => <Car
+                                                                currentCars.map(car => <Car
                                                                     key={car._id}
                                                                     car={car}
                                                                 ></Car>)
@@ -203,9 +467,9 @@ const Cars = () => {
                                             </section>
                                             :
                                             <div >
-                                                <h4 className="text-center fw-bold">No Vehicles Available Based On Your Filter</h4>
+                                                <h4 className="text-center fw-bold">No Cars Available Based On Your Filter</h4>
                                                 <div className="d-flex justify-content-center align-items-center">
-
+                                                    <img className="img-fluid col-11 col-md-9 col-lg-6 mx-auto" src={notFound} alt="" />
                                                 </div>
                                             </div>
                                     }

@@ -10,6 +10,7 @@ import ReactPaginate from 'react-paginate';
 import './Cars.css';
 import CarBrand from './CarBrand';
 import CarModel from './CarModel';
+import CarType from './CarType';
 
 const Cars = () => {
     const { condition } = useParams();
@@ -107,16 +108,16 @@ const Cars = () => {
                                         <div className="d-flex">
                                             <h6 className="ms-2">Types</h6>
                                         </div>
-                                        {/* <div className="row col-11 mx-auto">
+                                        <div className="row col-11 mx-auto">
                                             {
-                                                vehiclesType.map(type => <VehicleType
-                                                    key={vehiclesType.indexOf(type)}
-                                                    index={vehiclesType.indexOf(type)}
+                                                carsType.map(type => <CarType
+                                                    key={carsType.indexOf(type)}
+                                                    index={carsType.indexOf(type)}
                                                     type={type}
-                                                    handleTypeClick={handleTypeClick}
-                                                ></VehicleType>)
+                                                // handleTypeClick={handleTypeClick}
+                                                ></CarType>)
                                             }
-                                        </div> */}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

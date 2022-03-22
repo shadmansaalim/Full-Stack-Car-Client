@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import './Cars.css';
+import CarBrand from './CarBrand';
 
 const Cars = () => {
     const { condition } = useParams();
@@ -15,14 +16,20 @@ const Cars = () => {
     const [cars, setCars] = useState([]);
     const [carCondition, setCarCondition] = useState(condition);
 
+    const carsBrand = [];
+
 
     const [userSelected, setUserSelected] = useState([]);
 
     useEffect(() => {
         fetch(`https://pure-sands-37131.herokuapp.com/cars?condition=${carCondition}`)
             .then(res => res.json())
-            .then(cars => setCars(cars))
+            .then(cars => {
+                setCars(cars);
+            })
     }, [carCondition])
+
+    cars.forEach(car => carsBrand.push(car.brand));
 
 
     //PAGINATION SETUP CODE
@@ -62,16 +69,16 @@ const Cars = () => {
                                         <div className="d-flex">
                                             <h6 className="ms-2">Brands</h6>
                                         </div>
-                                        {/* <div className="row mx-auto col-11">
+                                        <div className="row mx-auto col-11">
                                             {
                                                 carsBrand.map(brand => <CarBrand
                                                     key={carsBrand.indexOf(brand)}
                                                     index={carsBrand.indexOf(brand)}
                                                     brand={brand}
-                                                    handleBrandClick={handleBrandClick}
+                                                // handleBrandClick={handleBrandClick}
                                                 ></CarBrand>)
                                             }
-                                        </div> */}
+                                        </div>
                                     </div>
                                     <div className="my-3">
                                         <div className="d-flex">

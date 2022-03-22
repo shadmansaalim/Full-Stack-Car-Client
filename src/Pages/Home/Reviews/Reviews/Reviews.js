@@ -45,7 +45,7 @@ const settings = {
 const Reviews = ({ reviews }) => {
 
     return (
-        <div className="p-5 mb-5">
+        <div className="p-4 mb-5">
             <h1 className="fw-bold mb-5" style={{ fontSize: '42px' }}>Customer Feedbacks</h1>
 
             <Slider {...settings}>

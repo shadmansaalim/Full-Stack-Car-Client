@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faEdit, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import useAuth from '../../../hooks/useAuth';
 import Rating from 'react-rating';
+import swal from 'sweetalert';
 
 const Car = ({ car, handleDeleteCar }) => {
     const { _id, modelName, bodyType, img, price, condition, available } = car;
@@ -31,7 +32,9 @@ const Car = ({ car, handleDeleteCar }) => {
                         (admin && location?.pathname === "/dashboard/manage-cars")
                             ?
                             <>
-                                <Button className="btn btn-dark ms-2">Edit <FontAwesomeIcon icon={faEdit} /></Button>
+                                <Button onClick={() => {
+                                    swal("Edit Feature Not Ready Yet", "Please wait until the developer releases edit functionality", "warning");
+                                }} className="btn btn-dark ms-2">Edit <FontAwesomeIcon icon={faEdit} /></Button>
                                 <Button onClick={() => handleDeleteCar(_id)} className="btn btn-danger ms-2">Remove <FontAwesomeIcon icon={faTrash} /></Button>
                             </>
                             :

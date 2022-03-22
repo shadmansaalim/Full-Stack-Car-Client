@@ -114,3 +114,8 @@ body{
     transform: scale(1.0);
   }
 }
+
+.swal-modal .swal-text {
+  text-align: center;
+}
+

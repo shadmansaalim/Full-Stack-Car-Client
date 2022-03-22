@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import './Cars.css';
 import CarBrand from './CarBrand';
+import CarModel from './CarModel';
 
 const Cars = () => {
     const { condition } = useParams();
@@ -17,6 +18,8 @@ const Cars = () => {
     const [carCondition, setCarCondition] = useState(condition);
 
     const carsBrand = [];
+    const carsModel = [];
+    const carsType = [];
 
 
     const [userSelected, setUserSelected] = useState([]);
@@ -29,7 +32,11 @@ const Cars = () => {
             })
     }, [carCondition])
 
-    cars.forEach(car => carsBrand.push(car.brand));
+    cars.forEach(car => {
+        carsBrand.push(car.brand);
+        carsModel.push(car.modelName);
+        carsType.push(car.bodyType);
+    });
 
 
     //PAGINATION SETUP CODE
@@ -84,19 +91,17 @@ const Cars = () => {
                                         <div className="d-flex">
                                             <h6 className="ms-2">Models</h6>
                                         </div>
-                                        {/* <div className="form-floating col-11 mx-auto">
-                                            <select onChange={
-                                                handleModelOnChange
-                                            } className="form-select p-0 ps-2" id="floatingSelect" aria-label="Floating label select example">
+                                        <div className="form-floating col-11 mx-auto">
+                                            <select className="form-select p-0 ps-2" id="floatingSelect" aria-label="Floating label select example">
                                                 <option disabled defaultValue selected>Models</option>
                                                 {
-                                                    vehiclesModel.map(model => <VehicleModel
-                                                        key={vehiclesModel.indexOf(model)}
+                                                    carsModel.map(model => <CarModel
+                                                        key={carsModel.indexOf(model)}
                                                         model={model}
-                                                    ></VehicleModel>)
+                                                    ></CarModel>)
                                                 }
                                             </select>
-                                        </div> */}
+                                        </div>
                                     </div>
                                     <div className="my-3">
                                         <div className="d-flex">

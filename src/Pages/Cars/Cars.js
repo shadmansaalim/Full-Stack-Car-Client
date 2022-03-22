@@ -5,7 +5,7 @@ import { Row } from 'react-bootstrap';
 import { useState } from 'react';
 import Car from '../Shared/Car/Car';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import './Cars.css';
 import CarBrand from './CarBrand';
@@ -30,7 +30,10 @@ const Cars = () => {
     const [types, setTypes] = useState([]);
     const [model, setModel] = useState(null);
 
+    const history = useHistory();
+
     useEffect(() => {
+        history.push(`/cars/${carCondition}`);
         fetch(`https://pure-sands-37131.herokuapp.com/cars?condition=${carCondition}`)
             .then(res => res.json())
             .then(cars => {
@@ -374,15 +377,15 @@ const Cars = () => {
                                             style={{ color: 'black' }}
                                         ></i>
                                         <div className="col-lg-6 mx-auto btn-group" role="group" aria-label="Basic radio toggle button group">
-                                            <label onClick={() => setCarCondition("All")} class={carCondition === "All" ? "btn app-main-btn active rounded-pill me-2 px-4 py-1" : "btn app-outline-btn rounded-pill me-2 px-4 py-1"} for="all">
+                                            <label onClick={() => setCarCondition("all-cars")} class={carCondition === "all-cars" ? "btn app-main-btn active rounded-pill me-2 px-4 py-1" : "btn app-outline-btn rounded-pill me-2 px-4 py-1"} for="all-cars">
                                                 All
-                                                <input type="radio" class="btn-check" name="condition" id="all" autocomplete="off" checked />
+                                                <input type="radio" class="btn-check" name="condition" id="all-cars" autocomplete="off" checked />
                                             </label>
-                                            <label onClick={() => setCarCondition("New")} class={carCondition === "New" ? "btn app-main-btn active rounded-pill me-2 px-4 py-1" : "btn app-outline-btn rounded-pill me-2 px-4 py-1"} for="new">New
-                                                <input type="radio" class="btn-check" name="condition" id="new" autocomplete="off" />
+                                            <label onClick={() => setCarCondition("new-cars")} class={carCondition === "new-cars" ? "btn app-main-btn active rounded-pill me-2 px-4 py-1" : "btn app-outline-btn rounded-pill me-2 px-4 py-1"} for="new-cars">New
+                                                <input type="radio" class="btn-check" name="condition" id="new-cars" autocomplete="off" />
                                             </label>
-                                            <label onClick={() => setCarCondition("Used")} class={carCondition === "Used" ? "btn app-main-btn active rounded-pill px-4 py-1" : "btn app-outline-btn rounded-pill px-4 py-1"} for="used">Used
-                                                <input type="radio" class="btn-check" name="condition" id="used" autocomplete="off" />
+                                            <label onClick={() => setCarCondition("used-cars")} class={carCondition === "used-cars" ? "btn app-main-btn active rounded-pill px-4 py-1" : "btn app-outline-btn rounded-pill px-4 py-1"} for="used-cars">Used
+                                                <input type="radio" class="btn-check" name="condition" id="used-cars" autocomplete="off" />
                                             </label>
                                         </div>
                                     </div>

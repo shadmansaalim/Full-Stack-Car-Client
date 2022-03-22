@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 
 const HomeBanner = () => {
-    const [condition, setCondition] = useState("All");
+    const [condition, setCondition] = useState("all-cars");
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
@@ -22,15 +22,15 @@ const HomeBanner = () => {
                     <h3 className="col-lg-6 m-0">Find your next car</h3>
 
                     <div className="col-lg-6 mx-auto btn-group mt-3 mt-lg-0" role="group" aria-label="Basic radio toggle button group">
-                        <label onClick={() => setCondition("All")} class={condition === "All" ? "btn app-main-btn active rounded-pill me-2 px-4 py-1" : "btn app-outline-btn rounded-pill me-2 px-4 py-1"} for="all">
+                        <label onClick={() => setCondition("all-cars")} class={condition === "all-cars" ? "btn app-main-btn active rounded-pill me-2 px-4 py-1" : "btn app-outline-btn rounded-pill me-2 px-4 py-1"} for="all-cars">
                             All
-                            <input type="radio" class="btn-check" name="condition" id="all" autocomplete="off" checked />
+                            <input type="radio" class="btn-check" name="condition" id="all-cars" autocomplete="off" checked />
                         </label>
-                        <label onClick={() => setCondition("New")} class={condition === "New" ? "btn app-main-btn active rounded-pill me-2 px-4 py-1" : "btn app-outline-btn rounded-pill me-2 px-4 py-1"} for="new">New
-                            <input type="radio" class="btn-check" name="condition" id="new" autocomplete="off" />
+                        <label onClick={() => setCondition("new-cars")} class={condition === "new-cars" ? "btn app-main-btn active rounded-pill me-2 px-4 py-1" : "btn app-outline-btn rounded-pill me-2 px-4 py-1"} for="new-cars">New
+                            <input type="radio" class="btn-check" name="condition" id="new-cars" autocomplete="off" />
                         </label>
-                        <label onClick={() => setCondition("Used")} class={condition === "Used" ? "btn app-main-btn active rounded-pill px-4 py-1" : "btn app-outline-btn rounded-pill px-4 py-1"} for="used">Used
-                            <input type="radio" class="btn-check" name="condition" id="used" autocomplete="off" />
+                        <label onClick={() => setCondition("used-cars")} class={condition === "used-cars" ? "btn app-main-btn active rounded-pill px-4 py-1" : "btn app-outline-btn rounded-pill px-4 py-1"} for="used-cars">Used
+                            <input type="radio" class="btn-check" name="condition" id="used-cars" autocomplete="off" />
                         </label>
                     </div>
 
@@ -40,7 +40,7 @@ const HomeBanner = () => {
                     <h5>30-day returns (up to 1500 mi)</h5>
                 </div>
                 <div>
-                    <Link to={condition === "All" ? "/cars/All" : condition === "New" ? "/cars/New" : "/cars/Used"}>
+                    <Link to={condition === "all-cars" ? "/cars/all-cars" : condition === "new-cars" ? "/cars/new-cars" : "/cars/used-cars"}>
                         {
                             cars?.length
                                 ?

@@ -14,7 +14,7 @@ import CarType from './CarType';
 
 const Cars = () => {
     const { condition } = useParams();
-    const [toggled, setToggled] = useState(false);
+    const [toggled, setToggled] = useState(true);
     const [cars, setCars] = useState([]);
     const [carCondition, setCarCondition] = useState(condition);
 
@@ -34,9 +34,15 @@ const Cars = () => {
     }, [carCondition])
 
     cars.forEach(car => {
-        carsBrand.push(car.brand);
-        carsModel.push(car.modelName);
-        carsType.push(car.bodyType);
+        if ((carsBrand.find(brand => brand === car.brand)) === undefined) {
+            carsBrand.push(car.brand);
+        }
+        if ((carsModel.find(model => model === car.modelName)) === undefined) {
+            carsModel.push(car.modelName);
+        }
+        if ((carsType.find(type => type === car.bodyType)) === undefined) {
+            carsType.push(car.bodyType);
+        }
     });
 
 
